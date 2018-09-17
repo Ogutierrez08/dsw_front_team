@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -22,9 +22,9 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     AppRoutingModule,
-    [ MatButtonModule, MatCheckboxModule ]
+    // [ MatButtonModule, MatCheckboxModule ]
   ],
   providers: [],
   bootstrap: [AppComponent]
