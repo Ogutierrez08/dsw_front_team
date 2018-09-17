@@ -4,15 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gestion Demandas Poder Judicial</title>
     <meta name="description" content="Material design landing page template built by TemplateFlip.com"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="./../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./../assets/css/mdb.min.css" rel="stylesheet">
-    <!-- <link href="./../assets/styles/main.css" rel="stylesheet"> -->
+    
   </head>
   <body id="top">
-    <!-- <app-root></app-root> -->
     <header>
       <!-- Navbar-->
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" id="navbar">
@@ -20,15 +15,16 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a class="nav-link active" href="#about">Conocenos</a></li>
-              <li class="nav-item"><a class="nav-link" href="#projects">Proyectos</a></li>
-              <li class="nav-item"><a class="nav-link" href="#pricing">Graficos</a></li>
-              <li class="nav-item"><a class="nav-link" href="#team">Equipo Desarrolador</a></li>
-              <li class="nav-item"><a class="nav-link" href="#contact">Contactanos</a></li>
+              <li class="nav-item"><a class="nav-link active" routerLink="/about-us">Conocenos</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="projects">Proyectos</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="graphics">Graficos</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="team">Equipo Desarrolador</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="contact-us">Contactanos</a></li>
             </ul>
           </div>
         </div>
       </nav>
+      <router-outlet></router-outlet>
       <!-- Intro Section-->
       <section class="view hm-gradient" id="intro">
         <div class="full-bg-img d-flex align-items-center">
@@ -79,212 +75,11 @@
   </div>
 </section>
 
-<section class="py-5" id="projects">
-  <div class="container">
-    <div class="wow fadeIn">
-      <h2 class="text-center h1 my-4">Nuestros Proyectos</h2>
-      <p class="px-5 mb-5 pb-3 lead blue-grey-text text-center">
-        Nuestro equipo de desarrolladores constantemente esta innovando y trayendo mejoras para nuestros usuarios
-      </p>
-    </div>
-    <div class="row wow fadeInLeft" data-wow-delay=".3s">
-      <div class="col-lg-6 col-xl-5 pr-lg-5 pb-5"><img class="img-fluid rounded z-depth-2" src="./../assets/img/kuala-lumpur.jpg" alt="project image"/></div>
-      <div class="col-lg-6 col-xl-7 pl-lg-5 pb-4">
-        <div class="row mb-3">
-          <div class="col-1 mr-1"><i class="fa fa-book fa-2x cyan-text"></i></div>
-          <div class="col-10">
-            <h5 class="font-bold">Educacion</h5>
-            <p class="grey-text">
-              Integracion con aulas virtuales, donde expertos daran toda la informacion sobre las nuevas reformas en el Poder Judicial
-            </p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-1 mr-1"><i class="fa fa-code fa-2x red-text"></i></div>
-          <div class="col-10">
-            <h5 class="font-bold">Tecnologia</h5>
-            <p class="grey-text">
-              Nuestro equipo de desarroladores constantemente se esta actualizando para ofrecer el mejor servicio web del pais.
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-1 mr-1"><i class="fa fa-money fa-2x deep-purple-text"></i></div>
-          <div class="col-10">
-            <h5 class="font-bold">Finanzas</h5>
-            <p class="grey-text">
-              El nuevo formato de demandas Laborales provee de una amplia gama de facilidades al usuario para proteger su patrimonio.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr/>
-    <div class="row pt-5 wow fadeInRight" data-wow-delay=".3s">
-      <div class="col-lg-6 col-xl-7 mb-3">
-        <div class="row mb-3">
-          <div class="col-1 mr-1"><i class="fa fa-bar-chart fa-2x indigo-text"></i></div>
-          <div class="col-10">
-            <h5 class="font-bold">Marketing</h5>
-            <p class="grey-text">
-              Los constantes reportes nos daran una vision mas amplia de los sectores mas problematicos al momento de hacer un negocio.
-            </p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-1 mr-1"><i class="fa fa-music fa-2x pink-text"></i></div>
-          <div class="col-10">
-            <h5 class="font-bold">Entretenimiento</h5>
-            <p class="grey-text">
-              Se impulsaran herramientas interactivas que motiven a los jovenes a participar del proyecto web Poder Judicial.
-            </p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-1 mr-1"><i class="fa fa-smile-o fa-2x blue-text"></i></div>
-          <div class="col-10">
-            <h5 class="font-bold">Communicacion</h5>
-            <p class="grey-text">
-              Se proveera de un sistema de seguimiento de demanda en una aplicacion App Android.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-xl-5 mb-3"><img class="img-fluid rounded z-depth-2" src="./../assets/img/san-francisco.jpg" alt="project image"/></div>
-    </div>
-  </div>
-</section>
 
-<section class="text-center py-5 indigo darken-1 text-white" id="pricing">
-  <div class="container">
-    <div class="wow fadeIn">
-      <h2 class="h1 pt-5 pb-3">Graficos en tiempo real</h2>
-      <p class="px-5 mb-5 pb-3 lead">
-        Vision general de las demandas que atendemos a nivel nacional
-      </p>
-    </div>
-    <div class="row wow zoomIn">
-      
-     <iframe src="https://onedrive.live.com/embed?resid=C20195D3EE2F228F%2136693&authkey=!AAC5DcZHwtDfIJ0&em=2&AllowTyping=True&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True"
-     width="100%" height="600px"></iframe>
-      
-    </div>
-  </div>
-</section>
-<section class="py-5" id="team">
-  <div class="container">
-    <div class="wow fadeIn">
-      <h2 class="h1 pt-5 pb-3 text-center">Equipo de Desarrolladores</h2>
-      <p class="px-5 mb-5 pb-3 lead text-center blue-grey-text">
-        Detras de un gran proyecto siempre hay grandes personas, esta seccion es un agradecimiento especial a los miembros que 
-        hacen posible el disfrutar de esta gran idea.
-      </p>
-    </div>
-    <div class="row mb-lg-4 center-on-small-only">
-      <div class="col-lg-6 col-md-12 mb-r wow fadeInLeft" data-wow-delay=".3s">
-        <div class="col-md-6 float-left"><img class="img-fluid rounded z-depth-1 mb-3" src="./../assets/img/man-1.jpg" alt="team member"/></div>
-        <div class="col-md-6 float-right">
-          <div class="h4">Oscar Gutierrez</div>
-          <h6 class="font-bold blue-grey-text mb-4">Scrum Master</h6>
-          <p class="grey-text">Disciplina e innovacion es lo que me caracteriza.</p><a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i><span class="ml-1">@oscarguti</span></a>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12 mb-r wow fadeInRight" data-wow-delay=".3s">
-        <div class="col-md-6 float-left"><img class="img-fluid rounded z-depth-1 mb-3" src="./../assets/img/woman-2.jpg" alt="team member"/></div>
-        <div class="col-md-6 float-right">
-          <div class="h4">Leslie Osorio</div>
-          <h6 class="font-bold blue-grey-text mb-4">Q&A Testing</h6>
-          <p class="grey-text">Carisma y deseos de superacion es lo que me caracteriza.</p><a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i><span class="ml-1">@lesosori</span></a>
-        </div>
-      </div>
-    </div>
-    <div class="row center-on-small-only">
-      <div class="col-lg-6 col-md-12 mb-r wow fadeInLeft" data-wow-delay=".3s">
-        <div class="col-md-6 float-left"><img class="img-fluid rounded z-depth-1 mb-3" src="./../assets/img/man-1.jpg" alt="team member"/></div>
-        <div class="col-md-6 float-right">
-          <div class="h4">Carlos Noel</div>
-          <h6 class="font-bold blue-grey-text mb-4">Equipo de Desarrollo</h6>
-          <p class="grey-text">Curiosidad y trabajo en eqipo es lo que me caracteriza.</p><a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i><span class="ml-1">@carlnoe</span></a>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12 mb-r wow fadeInRight" data-wow-delay=".3s">
-        <div class="col-md-6 float-left"><img class="img-fluid rounded z-depth-1 mb-3" src="./../assets/img/man-2.jpg" alt="team member"/></div>
-        <div class="col-md-6 float-right">
-          <div class="h4">Howards Aguila</div>
-          <h6 class="font-bold blue-grey-text mb-4">Product Owner</h6>
-          <p class="grey-text">Lograr el objetivo solo es el primer paso, mantener el objetivo es lo esencial.</p><a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i><span class="ml-1">@aguihow
-          </span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="contact" style="background-image:url('assets/img/panorama-3094696_1920.jpg');">
-  <div class="rgba-black-strong py-5">
-    <div class="container">
-      <div class="wow fadeIn">
-        <h2 class="h1 text-white pt-5 pb-3 text-center">Contactanos</h2>
-        <p class="text-white px-5 mb-5 pb-3 lead text-center">
-          Comparte tus opiniones con nosotros y se parte de este gran proyecto
-        </p>
-      </div>
-      <div class="card mb-5 wow fadeInUp" data-wow-delay=".4s">
-        <div class="card-body p-5">
-          <div class="row">
-            <div class="col-md-8">
-              <form action="https://formspree.io/youremail@example.com" method="POST">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="md-form">
-                      <input class="form-control" id="name" type="text" name="name" required="required"/>
-                      <label for="name">Tu Nombre</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="md-form">
-                      <input class="form-control" id="email" type="text" name="_replyto" required="required"/>
-                      <label for="email">Tu E-Mail</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="md-form">
-                      <input class="form-control" id="subject" type="text" name="subject" required="required"/>
-                      <label for="subject">Asunto</label>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="md-form">
-                      <textarea class="md-textarea" id="message" name="message" required="required"></textarea>
-                      <label for="message">Tu Mensaje</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="center-on-small-only mb-4">
-                  <button class="btn btn-indigo ml-0" type="submit"><i class="fa fa-paper-plane-o mr-2"></i>Enviar</button>
-                </div>
-              </form>
-            </div>
-            <div class="col-md-4">
-              <ul class="list-unstyled text-center">
-                <li class="mt-4"><i class="fa fa-map-marker indigo-text fa-2x"></i>
-                  <p class="mt-2">Av Paseo de la República, Cercado de Lima 15001</p>
-                </li>
-                <li class="mt-4"><i class="fa fa-phone indigo-text fa-2x"></i>
-                  <p class="mt-2">+ 51 943632020</p>
-                </li>
-                <li class="mt-4"><i class="fa fa-envelope indigo-text fa-2x"></i>
-                  <p class="mt-2">i2016121197@cibertec.edu.pe</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section></div>
+
+
+
+</div>
     <footer class="page-footer indigo darken-2 center-on-small-only pt-0 mt-0">
       <div class="container">
         <div class="row">
@@ -299,10 +94,5 @@
         </div>
       </div>
     </footer>
-    <script type="text/javascript" src="./../assets/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="./../assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="./../assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./../assets/js/mdb.min.js"></script>
-    <script>new WOW().init();</script>
   </body>
 </html>
