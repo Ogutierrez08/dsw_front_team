@@ -10,6 +10,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { GraphicsComponent } from './graphics/graphics.component';
 import { TeamComponent } from './team/team.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { IntroComponent } from './intro/intro.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     ProjectsComponent,
     GraphicsComponent,
     TeamComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    IntroComponent
   ],
   imports: [
     BrowserModule,
