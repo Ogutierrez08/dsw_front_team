@@ -6,8 +6,13 @@ import { ProjectsComponent } from '../projects/projects.component';
 import { GraphicsComponent } from '../graphics/graphics.component';
 import { TeamComponent } from '../team/team.component';
 import { ContactUsComponent } from '../contact-us/contact-us.component';
+import { PanelComponent} from '../panel/panel.component'
 
 const routes: Routes = [
+  {
+    path:'',
+    component: PanelComponent
+  },
   {
     path: 'about-us',
     component: AboutUsComponent
