@@ -7,21 +7,22 @@
           Comparte tus opiniones con nosotros y se parte de este gran proyecto
         </p>
       </div>
+     
       <div class="card mb-5 wow fadeInUp" data-wow-delay=".4s">
         <div class="card-body p-5">
           <div class="row">
             <div class="col-md-8">
-              <form action="https://formspree.io/youremail@example.com" method="POST">
+              <form (ngSubmit)="contactForm(form.value)" #form="ngForm">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="md-form">
-                      <input class="form-control" id="name" type="text" name="name" required="required"/>
+                      <input class="form-control" id="name" type="text" name="nombre" required="required" ngModel/>
                       <label for="name">Tu Nombre</label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="md-form">
-                      <input class="form-control" id="email" type="text" name="_replyto" required="required"/>
+                      <input class="form-control" id="email" type="text" name="email" required="required" ngModel/>
                       <label for="email">Tu E-Mail</label>
                     </div>
                   </div>
@@ -29,13 +30,13 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="md-form">
-                      <input class="form-control" id="subject" type="text" name="subject" required="required"/>
+                      <input class="form-control" id="subject" type="text" name="asunto" required="required" ngModel/>
                       <label for="subject">Asunto</label>
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="md-form">
-                      <textarea class="md-textarea" id="message" name="message" required="required"></textarea>
+                      <textarea class="md-textarea" id="message" name="mensaje" required="required" ngModel></textarea>
                       <label for="message">Tu Mensaje</label>
                     </div>
                   </div>
