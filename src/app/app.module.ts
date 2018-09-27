@@ -1,10 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+//Servicios
 import { MessageService } from './services/message.service';
+import {FirestoreService} from './services/firestore/firestore.service'
+
+import {InputTextModule} from 'primeng/primeng';
+import {ButtonModule} from 'primeng/primeng';
+import {DialogModule} from 'primeng/primeng';
+
+//Firebase
+import {AngularFireModule} from 'angularfire2';
+import {environment} from '../environments/environment'
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+
+//Paginacion
+import {NgxPaginationModule} from 'ngx-pagination'
 
 import { AppComponent } from './app.component';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -15,6 +28,8 @@ import { TeamComponent } from './team/team.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PanelComponent } from './panel/panel.component';
 import { FooterComponent } from './footer/footer.component';
+import { AbogadoComponent } from './CRUD/abogado/abogado.component';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
@@ -25,7 +40,8 @@ import { FooterComponent } from './footer/footer.component';
     TeamComponent,
     ContactUsComponent,
     PanelComponent,
-    FooterComponent
+    FooterComponent,
+    AbogadoComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +49,14 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     // [ MatButtonModule, MatCheckboxModule ]
     HttpClientModule,
-    FormsModule
+    AngularFireModule.initializeApp(environment.firebase),
+    FormsModule,
+    InputTextModule,
+    ButtonModule,
+    DialogModule,
+    NgxPaginationModule
   ],
-  providers: [MessageService],
+  providers: [MessageService,FirestoreService,AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule {

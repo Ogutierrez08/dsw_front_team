@@ -1,0 +1,39 @@
+<section id="ListAbogados" style="background-image:url('assets/img/panorama-3094696_1920.jpg');">
+  <div class="rgba-black-strong py-5">
+    <div class="container">
+      <div class="wow fadeIn">
+        <h2 class="h1 text-white pt-5 pb-3 text-center">Representantes Legales</h2>
+        <p class="text-white px-5 mb-5 pb-3 lead text-center">
+          Relacion de Representantes Legales
+        </p>
+      </div>
+
+<div class="table-users">
+    <div class="header">Abogados</div>
+    
+    <table cellspacing="0">
+      <thead>
+       <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Numero</th>
+          <th width="230">Comentarios</th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr *ngFor="let abogado of abogados | paginate:{ itemsPerPage:3, currentPage: p}">
+          <td><img [src]="abogado.data.url"></td>
+          <td>{{abogado.data.nombre}}</td>
+          <td>j.smith@foo.com</td>
+          <td>01 800 2000</td>
+          <td>Test Lista Personalizada </td>
+       </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="p=$event" class="pagination"></pagination-controls>
+ </div>
+</div>
+</div>
+</section>
+<app-footer></app-footer>
