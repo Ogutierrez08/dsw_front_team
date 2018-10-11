@@ -11,11 +11,11 @@ export class RegistrarAbogadoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    var current_fs, next_fs, previous_fs; //fieldsets
-    var left, opacity, scale; //fieldset properties which we will animate
-    var animating; //flag to prevent quick multi-click glitches
-
-$(".next").click(function(){
+	var current_fs, next_fs, previous_fs; //fieldsets
+	var left, opacity, scale; //fieldset properties which we will animate
+	var animating; //flag to prevent quick multi-click glitches
+	
+	$(".next").click(function(){
 	if(animating) return false;
 	animating = true;
 	
@@ -38,9 +38,9 @@ $(".next").click(function(){
 			//3. increase opacity of next_fs to 1 as it moves in
 			opacity = 1 - now;
 			current_fs.css({
-        'transform': 'scale('+scale+')',
-        'position': 'absolute'
-      });
+		'transform': 'scale('+scale+')',
+		'position': 'absolute'
+	  });
 			next_fs.css({'left': left, 'opacity': opacity});
 		}, 
 		duration: 800, 
@@ -51,9 +51,9 @@ $(".next").click(function(){
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
 	});
-});
-
-$(".previous").click(function(){
+	});
+	
+	$(".previous").click(function(){
 	if(animating) return false;
 	animating = true;
 	
@@ -86,12 +86,46 @@ $(".previous").click(function(){
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
 	});
-});
-
-$(".submit").click(function(){
+	});
+	
+	$('#fileup').change(function(){
+	//here we take the file extension and set an array of valid extensions
+		var res=$('#fileup').val();
+		var arr = res.split("\\");
+		var filename=arr.slice(-1)[0];
+		var filextension=filename.split(".");
+		var filext="."+filextension.slice(-1)[0];
+		var valid=[".jpg",".png",".jpeg",".bmp"];
+	//if file is not valid we show the error icon, the red alert, and hide the submit button
+		if (valid.indexOf(filext.toLowerCase())==-1){
+			$( ".imgupload" ).hide("slow");
+			$( ".imgupload.ok" ).hide("slow");
+			$( ".imgupload.stop" ).show("slow");
+		  
+			$('#namefile').css({"color":"red","font-weight":700});
+			$('#namefile').html("File "+filename+" is not  pic!");
+			
+			$( "#submitbtn" ).hide();
+			$( "#fakebtn" ).show();
+		}else{
+			//if file is valid we show the green alert and show the valid submit
+			$( ".imgupload" ).hide("slow");
+			$( ".imgupload.stop" ).hide("slow");
+			$( ".imgupload.ok" ).show("slow");
+		  
+			$('#namefile').css({"color":"green","font-weight":700});
+			$('#namefile').html(filename);
+		  
+			$( "#submitbtn" ).show();
+			$( "#fakebtn" ).hide();
+		}
+	});
+	
+	
+	
+	$(".submit").click(function(){
 	return false;
-})
-  
+	})
   }
   
 }

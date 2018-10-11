@@ -8,7 +8,7 @@
         </p>
       </div>
 <!-- multistep form -->
-<div style="height: 500px;">
+<div style="height: 550px;">
 <form id="msform">
   <!-- progressbar -->
   <ul id="progressbar">
@@ -22,7 +22,26 @@
     <h3 class="fs-subtitle">Paso 1</h3>
     <input type="text" name="email" placeholder="Email" />
     <input type="password" name="espe" placeholder="Especialidad" />
-    <input type="file" name="foto" placeholder="Foto" />
+    
+    
+				<div class="row center">
+            <div class="col center">
+					<!--the three icons: default, ok file (img), error file (not an img)-->
+					<h1 class="imgupload"><i class="fa fa-file-image-o"></i></h1>
+					<h1 class="imgupload ok"><i class="fa fa-check"></i></h1>
+					<h1 class="imgupload stop"><i class="fa fa-times"></i></h1>
+					<!--this field changes dinamically displaying the filename we are trying to upload-->
+					<!--our custom btn which which stays under the actual one-->
+          <button type="button" id="btnup" class="btn btn-primary btn-lg">Subir Imagen</button>
+          <br>
+          <br>
+					<!--this is the actual file input, is set with opacity=0 beacause we wanna see our custom one-->
+          <input type="file" value="" name="fileup" id="fileup">
+          </div>
+				</div>
+   
+    
+    
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
   <fieldset>
