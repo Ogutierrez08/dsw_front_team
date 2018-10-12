@@ -31,6 +31,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AbogadoComponent } from './CRUD/abogado/abogado.component';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { RegistrarAbogadoComponent } from './CRUD/registrar-abogado/registrar-abogado.component';
+import { RegistrarUsuarioComponent } from './CRUD/registrar-usuario/registrar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { RegistrarAbogadoComponent } from './CRUD/registrar-abogado/registrar-ab
     PanelComponent,
     FooterComponent,
     AbogadoComponent,
-    RegistrarAbogadoComponent
+    RegistrarAbogadoComponent,
+    RegistrarUsuarioComponent
   ],
   imports: [
     BrowserModule,

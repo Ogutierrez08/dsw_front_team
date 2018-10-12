@@ -122,10 +122,6 @@ export class RegistrarAbogadoComponent implements OnInit {
 	});
 	
 	
-	
-	$(".submit").click(function(){
-	return false;
-	})
   }
   
 }

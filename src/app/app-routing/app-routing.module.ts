@@ -9,6 +9,7 @@ import { ContactUsComponent } from '../contact-us/contact-us.component';
 import { PanelComponent} from '../panel/panel.component'
 import {AbogadoComponent} from '../CRUD/abogado/abogado.component'
 import {RegistrarAbogadoComponent} from '../CRUD/registrar-abogado/registrar-abogado.component'
+import {RegistrarUsuarioComponent} from '../CRUD/registrar-usuario/registrar-usuario.component'
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'register-rl',
     component: RegistrarAbogadoComponent
+  },
+  {
+    path: 'register-usu',
+    component: RegistrarUsuarioComponent
   }
 ];
 
