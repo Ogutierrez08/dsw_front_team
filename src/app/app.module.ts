@@ -32,6 +32,7 @@ import { AbogadoComponent } from './CRUD/abogado/abogado.component';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { RegistrarAbogadoComponent } from './CRUD/registrar-abogado/registrar-abogado.component';
 import { RegistrarUsuarioComponent } from './CRUD/registrar-usuario/registrar-usuario.component';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { RegistrarUsuarioComponent } from './CRUD/registrar-usuario/registrar-us
     // [ MatButtonModule, MatCheckboxModule ]
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
     FormsModule,
     InputTextModule,
     ButtonModule,

@@ -36,7 +36,8 @@
           <br>
           <br>
 					<!--this is the actual file input, is set with opacity=0 beacause we wanna see our custom one-->
-          <input type="file" value="" name="fileup" id="fileup">
+          <input type="file" value="" name="fileup" id="fileup" (change)="upload($event)">
+          <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
           </div>
 				</div>
    

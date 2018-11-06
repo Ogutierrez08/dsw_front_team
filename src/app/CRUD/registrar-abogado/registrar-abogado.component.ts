@@ -1,4 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
+import {AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask} from 'angularfire2/storage'
+import { Observable } from 'rxjs';
+import {finalize} from 'rxjs/operators'
 declare var $: any;
 
 @Component({
@@ -7,8 +11,21 @@ declare var $: any;
   styleUrls: ['./registrar-abogado.component.css']
 })
 export class RegistrarAbogadoComponent implements OnInit {
+  ref:AngularFireStorageReference;
+  task: AngularFireUploadTask;
+  downloadURL: Observable<string>;
+  constructor(private afStorage:AngularFireStorage) { }
 
-  constructor() { }
+  upload(event){
+	const id = Math.random().toString(36).substring(2);
+	this.ref = this.afStorage.ref(id);
+	this.task = this.ref.put(event.target.files[0]);
+	
+	this.task.snapshotChanges().pipe(
+		finalize(()=>this.downloadURL = this.ref.getDownloadURL())
+	).subscribe()
+	
+  }
 
   ngOnInit() {
 	var current_fs, next_fs, previous_fs; //fieldsets
