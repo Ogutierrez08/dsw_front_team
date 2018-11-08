@@ -7,37 +7,36 @@
           Registro de Representantes Legales
         </p>
       </div>
-<!-- multistep form -->
+
 <div style="height: 550px;">
-<form id="msform">
-  <!-- progressbar -->
+<form id="msform" (ngSubmit)="guardarAbogado(formNew)" #formNew="ngForm">
+  
   <ul id="progressbar">
     <li class="active">Informacion General</li>
     <li>Redes Sociales</li>
     <li>Informacion Personal</li>
   </ul>
-  <!-- fieldsets -->
+  
   <fieldset>
     <h2 class="fs-title">Informacion General</h2>
     <h3 class="fs-subtitle">Paso 1</h3>
-    <input type="text" name="email" placeholder="Email" />
-    <input type="password" name="espe" placeholder="Especialidad" />
+    <input [(ngModel)]="abogado.email" #email="ngModel" type="email" name="email" placeholder="Email" />
+    <input [(ngModel)]="abogado.especialidad" #especialidad="ngModel" type="text" name="espe" placeholder="Especialidad" />
     
     
 				<div class="row center">
             <div class="col center">
-					<!--the three icons: default, ok file (img), error file (not an img)-->
+				
 					<h1 class="imgupload"><i class="fa fa-file-image-o"></i></h1>
 					<h1 class="imgupload ok"><i class="fa fa-check"></i></h1>
 					<h1 class="imgupload stop"><i class="fa fa-times"></i></h1>
-					<!--this field changes dinamically displaying the filename we are trying to upload-->
-					<!--our custom btn which which stays under the actual one-->
+					
           <button type="button" id="btnup" class="btn btn-primary btn-lg">Subir Imagen</button>
           <br>
           <br>
-					<!--this is the actual file input, is set with opacity=0 beacause we wanna see our custom one-->
+					
           <input type="file" value="" name="fileup" id="fileup" (change)="upload($event)">
-          <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+          <input [(ngModel)]="abogado.foto" #foto="ngModel" name="foto" type ="text" value="{{ downloadURL | async }}" hidden="true"/>
           </div>
 				</div>
    
@@ -48,19 +47,19 @@
   <fieldset>
     <h2 class="fs-title">Redes Sociales</h2>
     <h3 class="fs-subtitle">Paso 2 </h3>
-    <input type="text" name="twitter" placeholder="Twitter" />
-    <input type="text" name="facebook" placeholder="Facebook" />
-    <input type="text" name="gplus" placeholder="Google Plus" />
+    <input [(ngModel)]="abogado.twitter" #twitter="ngModel" type="text" name="twitter" placeholder="Twitter" />
+    <input [(ngModel)]="abogado.facebook" #facebook="ngModel" type="text" name="facebook" placeholder="Facebook" />
+    <input [(ngModel)]="abogado.google" #google="ngModel" type="text" name="gplus" placeholder="Google Plus" />
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Informacion Personal</h2>
     <h3 class="fs-subtitle">Paso 3</h3>
-    <input type="text" name="fname" placeholder="Nombres" />
-    <input type="text" name="lname" placeholder="Apellidos" />
-    <input type="text" name="phone" placeholder="Telefono" />
-    <textarea name="address" placeholder="Comentarios"></textarea>
+    <input [(ngModel)]="abogado.nombres" #nombres="ngModel" type="text" name="fname" placeholder="Nombres" />
+    <input [(ngModel)]="abogado.apellidos" #apellidos="ngModel" type="text" name="lname" placeholder="Apellidos" />
+    <input [(ngModel)]="abogado.telefono" #telefono="ngModel" type="text" name="phone" placeholder="Telefono" />
+    <textarea [(ngModel)]="abogado.comentarios" #comentarios="ngModel" name="comentarios" placeholder="Comentarios"></textarea>
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="submit" name="submit" class="submit action-button" value="Submit" />
   </fieldset>

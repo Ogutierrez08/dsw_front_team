@@ -16,18 +16,28 @@
        <tr>
           <th>Imagen</th>
           <th>Nombre</th>
+          <th>Apellidos</th>
           <th>Email</th>
+          <th>Especialidad</th>
+          <th>Facebook</th>
+          <th>Google</th>
+          <th>Twitter</th>
           <th>Numero</th>
           <th width="230">Comentarios</th>
        </tr>
       </thead>
       <tbody>
        <tr *ngFor="let abogado of abogados | paginate:{ itemsPerPage:3, currentPage: p}">
-          <td><img [src]="abogado.data.url"></td>
-          <td>{{abogado.data.nombre}}</td>
-          <td>j.smith@foo.com</td>
-          <td>01 800 2000</td>
-          <td>Test Lista Personalizada </td>
+          <td><img [src]="abogado.data.foto"></td>
+          <td>{{abogado.data.nombres}}</td>
+          <td>{{abogado.data.apellidos}}</td>
+          <td>{{abogado.data.email}}</td>
+          <td>{{abogado.data.especialidad}}</td>
+          <td>{{abogado.data.facebook}}</td>
+          <td>{{abogado.data.google}}</td>
+          <td>{{abogado.data.twitter}}</td>
+          <td>{{abogado.data.numero}}</td>
+          <td>{{abogado.data.comenatios}}</td>
        </tr>
       </tbody>
     </table>

@@ -3,7 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask} from 'angularfire2/storage'
 import { Observable } from 'rxjs';
 import {finalize} from 'rxjs/operators'
+import { AbogadosInterface } from 'src/app/models/abogados';
 declare var $: any;
+import {FirestoreService} from 'src/app/services/firestore/firestore.service';
+import { NgForm } from '@angular/forms';
+import swal from 'sweetalert'
 
 @Component({
   selector: 'app-registrar-abogado',
@@ -14,7 +18,32 @@ export class RegistrarAbogadoComponent implements OnInit {
   ref:AngularFireStorageReference;
   task: AngularFireUploadTask;
   downloadURL: Observable<string>;
-  constructor(private afStorage:AngularFireStorage) { }
+  abogado: AbogadosInterface = {
+    apellidos: '',
+    comentarios: '',
+    email: '',
+    especialidad: '',
+    facebook: '',
+    foto: '',
+    google: '',
+    nombres: '',
+    telefono: '',
+    twitter: '',
+
+  };
+
+  constructor(private afStorage:AngularFireStorage , private abogadoService:FirestoreService) { }
+
+  guardarAbogado(myForm:NgForm){
+		console.log(this.abogado.foto)
+		this.abogadoService.createAbogado(this.abogado, () => {
+			swal("Representante Legal","Registrado",'success').then((value)=>{
+				location.reload()
+			})
+
+		})
+	
+  }
 
   upload(event){
 	const id = Math.random().toString(36).substring(2);
@@ -22,7 +51,12 @@ export class RegistrarAbogadoComponent implements OnInit {
 	this.task = this.ref.put(event.target.files[0]);
 	
 	this.task.snapshotChanges().pipe(
-		finalize(()=>this.downloadURL = this.ref.getDownloadURL())
+		finalize(()=>{
+			this.ref.getDownloadURL().subscribe((res) => {
+				this.abogado.foto = res
+				
+			})
+		})
 	).subscribe()
 	
   }

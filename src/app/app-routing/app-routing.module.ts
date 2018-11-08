@@ -34,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: 'contact-us',
-    component: ContactUsComponent
+    component: AbogadoComponent
   },
   {
     path: 'register-rl',
