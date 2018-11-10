@@ -31,7 +31,7 @@
       <i class="fa fa-exclamation-circle"></i>
     </div>
         <div *ngIf="email.errors.required" class="col"><strong>Email Requerido</strong></div>
-        <div *ngIf="email.errors.email">Formato de email invalido</div>
+        <div *ngIf="email.errors.email" class="col"><strong>Formato de email invalido</strong></div>
       </div>
     </div>
 
@@ -61,7 +61,7 @@
 					
           <input type="file" value="" name="fileup" id="fileup" (change)="upload($event)">
           <input [(ngModel)]="abogado.foto" #foto="ngModel" name="foto" type ="text" value="{{ downloadURL | async }}" hidden="true"/>
-          </div>
+        </div>
 				</div>
    
     
@@ -74,18 +74,72 @@
     <h2 class="fs-title">Redes Sociales</h2>
     <h3 class="fs-subtitle">Paso 2 </h3>
     <input [(ngModel)]="abogado.twitter" #twitter="ngModel" type="text" name="twitter" placeholder="Twitter" />
+    
+   
     <input [(ngModel)]="abogado.facebook" #facebook="ngModel" type="text" name="facebook" placeholder="Facebook" />
+   
+   
     <input [(ngModel)]="abogado.google" #google="ngModel" type="text" name="gplus" placeholder="Google Plus" />
+   
+   
+   
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Informacion Personal</h2>
     <h3 class="fs-subtitle">Paso 3</h3>
-    <input [(ngModel)]="abogado.nombres" #nombres="ngModel" type="text" name="fname" placeholder="Nombres" />
-    <input [(ngModel)]="abogado.apellidos" #apellidos="ngModel" type="text" name="lname" placeholder="Apellidos" />
-    <input [(ngModel)]="abogado.telefono" #telefono="ngModel" type="text" name="phone" placeholder="Telefono" />
-    <textarea [(ngModel)]="abogado.comentarios" #comentarios="ngModel" name="comentarios" placeholder="Comentarios"></textarea>
+    <input [(ngModel)]="abogado.nombres" #nombres="ngModel" type="text" 
+    [ngClass] = "{'is-invalid':formNew.submitted && nombres.invalid}"
+    class="form-control"
+    name="fname" placeholder="Nombres" required/>
+    <div *ngIf="formNew.touched && nombres.invalid" class="alert alert-danger" role="alert">
+      <div class="row">
+      <div class="col-1 alert-icon-col">
+      <i class="fa fa-exclamation-circle"></i>
+    </div>
+        <div *ngIf="nombres.errors.required" class="col"><strong>Nombre es un campo obligatorio</strong></div>
+  </div>
+    </div>
+
+    
+    <input [(ngModel)]="abogado.apellidos" #apellidos="ngModel" type="text" 
+    name="lname" placeholder="Apellidos" required/>
+    <div *ngIf="formNew.touched && apellidos.invalid" class="alert alert-danger" role="alert">
+      <div class="row">
+      <div class="col-1 alert-icon-col">
+      <i class="fa fa-exclamation-circle"></i>
+    </div>
+        <div *ngIf="apellidos.errors.required" class="col"><strong>Apellidos es un campo obligatorio</strong></div>
+  </div>
+    </div>
+
+
+
+    <input [(ngModel)]="abogado.telefono" #telefono="ngModel" type="text" name="phone" 
+    placeholder="Telefono" required />
+    
+    <div *ngIf="formNew.touched && telefono.invalid" class="alert alert-danger" role="alert">
+      <div class="row">
+      <div class="col-1 alert-icon-col">
+      <i class="fa fa-exclamation-circle"></i>
+    </div>
+        <div *ngIf="telefono.errors.required" class="col"><strong>Telefono es un campo obligatorio</strong></div>
+  </div>
+    </div>
+
+    <textarea [(ngModel)]="abogado.comentarios" #comentarios="ngModel" name="comentarios"
+     placeholder="Comentarios" required></textarea>
+    <div *ngIf="formNew.touched && comentarios.invalid" class="alert alert-danger" role="alert">
+      <div class="row">
+      <div class="col-1 alert-icon-col">
+      <i class="fa fa-exclamation-circle"></i>
+    </div>
+        <div *ngIf="comentarios.errors.required" class="col"><strong>Se debe registrar comentarios</strong></div>
+  </div>
+    </div>
+
+
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="submit" name="submit" class="submit action-button" value="Submit" />
   </fieldset>
