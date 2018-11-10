@@ -32,6 +32,7 @@ export class RegistrarAbogadoComponent implements OnInit {
 
   };
 
+
   constructor(private afStorage:AngularFireStorage , private abogadoService:FirestoreService) { }
 
   guardarAbogado(myForm:NgForm){
@@ -67,6 +68,7 @@ export class RegistrarAbogadoComponent implements OnInit {
 	var animating; //flag to prevent quick multi-click glitches
 	
 	$(".next").click(function(){
+	
 	if(animating) return false;
 	animating = true;
 	
@@ -173,6 +175,5 @@ export class RegistrarAbogadoComponent implements OnInit {
 	});
 	
 	
-  }
-  
+  }  
 }

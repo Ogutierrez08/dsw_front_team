@@ -9,7 +9,7 @@
       </div>
 
 <div style="height: 550px;">
-<form id="msform" (ngSubmit)="guardarAbogado(formNew)" #formNew="ngForm">
+<form id="msform" (ngSubmit)="formNew.form.valid && guardarAbogado(formNew)" #formNew="ngForm" novalidate>
   
   <ul id="progressbar">
     <li class="active">Informacion General</li>
@@ -20,9 +20,33 @@
   <fieldset>
     <h2 class="fs-title">Informacion General</h2>
     <h3 class="fs-subtitle">Paso 1</h3>
-    <input [(ngModel)]="abogado.email" #email="ngModel" type="email" name="email" placeholder="Email" />
-    <input [(ngModel)]="abogado.especialidad" #especialidad="ngModel" type="text" name="espe" placeholder="Especialidad" />
-    
+
+    <input [(ngModel)]="abogado.email" #email="ngModel" type="email" name="email"
+    [ngClass] = "{'is-invalid':formNew.submitted && email.invalid}"
+    class="form-control"
+    placeholder="Email" required email/>
+    <div *ngIf="formNew.touched && email.invalid" class="alert alert-danger" role="alert">
+      <div class="row">
+      <div class="col-1 alert-icon-col">
+      <i class="fa fa-exclamation-circle"></i>
+    </div>
+        <div *ngIf="email.errors.required" class="col"><strong>Email Requerido</strong></div>
+        <div *ngIf="email.errors.email">Formato de email invalido</div>
+      </div>
+    </div>
+
+    <input [(ngModel)]="abogado.especialidad" #especialidad="ngModel" type="text" name="espe"
+    [ngClass] = "{'is-invalid':formNew.submitted && especialidad.invalid}"
+    class="form-control"
+    placeholder="Especialidad" required/>
+    <div *ngIf="formNew.touched && especialidad.invalid" class="alert alert-danger" role="alert">
+        <div class="row">
+        <div class="col-1 alert-icon-col">
+        <i class="fa fa-exclamation-circle"></i>
+      </div>
+          <div *ngIf="especialidad.errors.required" class="col"><strong>Especialidad Requerida</strong></div>
+    </div>
+      </div>
     
 				<div class="row center">
             <div class="col center">
@@ -42,7 +66,9 @@
    
     
     
-    <input type="button" name="next" class="next action-button" value="Next" />
+    <input type="button" name="next" 
+    class="next action-button" value="Next" />
+
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Redes Sociales</h2>
