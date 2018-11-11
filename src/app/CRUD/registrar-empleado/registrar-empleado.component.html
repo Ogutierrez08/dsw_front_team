@@ -1,3 +1,47 @@
-<p>
-  registrar-empleado works!
-</p>
+<section id="ListEmpleados" style="background-image:url('https://www.esan.edu.pe/conexion/actualidad/2017/08/28/1500x844_corporativo.jpg');">
+
+    <div class="rgba-black-strong py5">
+        <div>
+            <div class="wow fadeIn">
+                <h2 class="h1 text-white pt-5 pb-3 text-center">
+                    Empleados
+                </h2>
+                <p class="text-white px-5 pb-3 lead text-center">
+                    Registro de Empleados
+                </p>
+            </div>
+
+            <div style="height: 550px;">
+                <form id="msForm" (ngSubmit)="guardarEmpleado(formNew)" #formNew="ngForm">
+                    <ul id="progressbar">
+                        <li class="active">Informacion Personal</li>
+                        <li>Informacion General</li>
+                    </ul>
+
+                    <fieldset>
+                        <h2 class="fs-title">Informacion Personal</h2>
+                        <h3 class="fs-subtitle">Paso 1</h3>
+                        <input [(ngModel)]="empleado.nombres" #nombres="ngModel" type="text" placeholder="Nombres">
+                        <input [(ngModel)]="empleado.apellidos" #apellidos="ngModel" type="text" placeholder="Apellidos">
+                        <input [(ngModel)]="empleado.dni" #dni="ngModel" type="text" placeholder="Dni">
+                        <input [(ngModel)]="empleado.direccion" #direccion="ngModel" type="text" placeholder="Direccion">
+
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+
+                    <fieldset>
+                        <h2 class="fs-title">Informacion General</h2>
+                        <h3 class="fs-subtitle">Paso 2</h3>
+                        <input [(ngModel)]="empleado.area" #area="ngModel" type="text" placeholder="Area">
+                        <input [(ngModel)]="empleado.cargo" #cargo="ngModel" type="text" placeholder="Cargo">
+                        <textarea [(ngModel)]="abogado.comentarios" #comentarios="ngModel" name="comentarios" placeholder="Comentarios"></textarea>
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+                        <input type="submit" name="submit" class="submit action-button" value="Submit" />
+                    </fieldset>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
