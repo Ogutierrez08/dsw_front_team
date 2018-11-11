@@ -34,6 +34,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { RegistrarAbogadoComponent } from './CRUD/registrar-abogado/registrar-abogado.component';
 import { RegistrarUsuarioComponent } from './CRUD/registrar-usuario/registrar-usuario.component';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { EmpleadoComponent } from './CRUD/empleado/empleado.component';
+import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-empleado.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     FooterComponent,
     AbogadoComponent,
     RegistrarAbogadoComponent,
-    RegistrarUsuarioComponent
+    RegistrarUsuarioComponent,
+    EmpleadoComponent,
+    RegistrarEmpleadoComponent
   ],
   imports: [
     BrowserModule,
