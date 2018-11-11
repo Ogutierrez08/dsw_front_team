@@ -27,5 +27,14 @@ export class RegistrarUsuarioComponent implements OnInit {
   ngOnInit() {
     
   }
+  guardar(){
+    this.service.registrarUsuario(this.usu)
+        .subscribe((data:any)=>{
+          console.log(data);
+          this.usu=data;
 
+        }, error =>{
+          console.log(error);
+        })
+  }
 }
