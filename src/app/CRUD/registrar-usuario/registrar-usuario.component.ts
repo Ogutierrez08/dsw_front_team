@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreUsuarioService } from '../../services/firestore/firestore-usuario.service';
+import { UsuarioInterface } from '../../models/usuario';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-registrar-usuario',
@@ -7,7 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrarUsuarioComponent implements OnInit {
 
-  constructor() { }
+  usu : UsuarioInterface ={
+    dni :0,
+    nombre:'',
+    apellido:'',
+    clave:'',
+    claveCopia:'',
+    correo:''
+  }
+  //variables que se usara para mostrar modales
+  isRegister :boolean;
+  
+  constructor(private service:FirestoreUsuarioService) { }
 
   ngOnInit() {
     

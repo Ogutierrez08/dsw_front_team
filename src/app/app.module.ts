@@ -5,6 +5,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 //Servicios
 import { MessageService } from './services/message.service';
 import {FirestoreService} from './services/firestore/firestore.service'
+import {FirestoreUsuarioService} from './services/firestore/firestore-usuario.service'
 
 import {InputTextModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
@@ -62,7 +63,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     DialogModule,
     NgxPaginationModule
   ],
-  providers: [MessageService,FirestoreService,AngularFirestore],
+  providers: [MessageService,FirestoreService,AngularFirestore,
+    FirestoreUsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
