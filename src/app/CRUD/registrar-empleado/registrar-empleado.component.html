@@ -12,7 +12,7 @@
             </div>
 
             <div style="height: 550px;">
-                <form id="msform" (ngSubmit)="guardarEmpleado(formNew)" #formNew="ngForm">
+                <form id="msForm" (ngSubmit)="guardarEmpleado(formNew)" #formNew="ngForm">
                     <ul id="progressbar">
                         <li class="active">Informacion Personal</li>
                         <li>Informacion General</li>
@@ -21,10 +21,10 @@
                     <fieldset>
                         <h2 class="fs-title">Informacion Personal</h2>
                         <h3 class="fs-subtitle">Paso 1</h3>
-                        <input [(ngModel)]="empleado.nombres" #nombres="ngModel" type="text" placeholder="Nombres" name="nombres">
-                        <input [(ngModel)]="empleado.apellidos" #apellidos="ngModel" type="text" placeholder="Apellidos" name="apellidos">
-                        <input [(ngModel)]="empleado.dni" #dni="ngModel" type="text" placeholder="Dni" name="dni">
-                        <input [(ngModel)]="empleado.direccion" #direccion="ngModel" type="text" placeholder="Direccion" name="direccion">
+                        <input [(ngModel)]="empleado.nombres" #nombres="ngModel" type="text" placeholder="Nombres">
+                        <input [(ngModel)]="empleado.apellidos" #apellidos="ngModel" type="text" placeholder="Apellidos">
+                        <input [(ngModel)]="empleado.dni" #dni="ngModel" type="text" placeholder="Dni">
+                        <input [(ngModel)]="empleado.direccion" #direccion="ngModel" type="text" placeholder="Direccion">
 
                         <input type="button" name="next" class="next action-button" value="Next" />
                     </fieldset>
@@ -32,16 +32,16 @@
                     <fieldset>
                         <h2 class="fs-title">Informacion General</h2>
                         <h3 class="fs-subtitle">Paso 2</h3>
-                        <input [(ngModel)]="empleado.area" #area="ngModel" type="text" placeholder="Area" name="area">
-                        <input [(ngModel)]="empleado.cargo" #cargo="ngModel" type="text" placeholder="Cargo" name="cargo">
-                        <textarea [(ngModel)]="empleado.comentario" #comentario="ngModel" name="comentario" placeholder="Comentarios"></textarea>
+                        <input [(ngModel)]="empleado.area" #area="ngModel" type="text" placeholder="Area">
+                        <input [(ngModel)]="empleado.cargo" #cargo="ngModel" type="text" placeholder="Cargo">
+                        <textarea [(ngModel)]="abogado.comentarios" #comentarios="ngModel" name="comentarios" placeholder="Comentarios"></textarea>
                         <input type="button" name="previous" class="previous action-button" value="Previous" />
                         <input type="submit" name="submit" class="submit action-button" value="Submit" />
                     </fieldset>
+
                 </form>
             </div>
         </div>
     </div>
-</section>
 
-<app-footer></app-footer>
+</section>

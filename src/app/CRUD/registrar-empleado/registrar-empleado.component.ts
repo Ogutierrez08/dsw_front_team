@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from "angularfire2/storage";
 import { Observable } from "rxjs";
+import { finalize } from "rxjs/operators";
 import { EmpleadosInterface } from "src/app/models/empleados";
 declare var $: any;
 import { FirestoreService } from "src/app/services/firestore/firestore.service";
