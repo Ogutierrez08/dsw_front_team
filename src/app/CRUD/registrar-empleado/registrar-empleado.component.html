@@ -34,7 +34,7 @@
                         <h3 class="fs-subtitle">Paso 2</h3>
                         <input [(ngModel)]="empleado.area" #area="ngModel" type="text" placeholder="Area" name="area">
                         <input [(ngModel)]="empleado.cargo" #cargo="ngModel" type="text" placeholder="Cargo" name="cargo">
-                        <textarea [(ngModel)]="abogado.comentario" #comentarios="ngModel" name="comentario" placeholder="Comentarios"></textarea>
+                        <textarea [(ngModel)]="empleado.comentario" #comentario="ngModel" name="comentario" placeholder="Comentarios"></textarea>
                         <input type="button" name="previous" class="previous action-button" value="Previous" />
                         <input type="submit" name="submit" class="submit action-button" value="Submit" />
                     </fieldset>
@@ -45,3 +45,4 @@
     </div>
 
 </section>
+<app-footer></app-footer>
