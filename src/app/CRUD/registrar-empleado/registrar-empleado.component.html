@@ -48,7 +48,7 @@
                             </div>
                         </div>
 
-                        <input [(ngModel)]="empleado.dni" #dni="ngModel" type="text" placeholder="Dni" name="dni" class="form-control" required>
+                        <input [(ngModel)]="empleado.dni" #dni="ngModel" type="text" placeholder="Dni" name="dni" class="form-control" required minlength="8" maxlength="8" pattern="[0-9]+">
                         <div *ngIf="formNew.touched && dni.invalid" class="alert alert-danger" role="alert">
                             <div class="row">
                                 <div class="col-1 alert-icon-col">
@@ -56,6 +56,12 @@
                                 </div>
                                 <div *ngIf="dni.errors.required" class="col">
                                     <strong>DNI Requerido</strong>
+                                </div>
+                                <div *ngIf="dni.errors.minlength">
+                                    <strong>DNI debe contener {{dni.errors.minlength.requiredLength}} caracteres</strong>
+                                </div>
+                                <div *ngIf="dni.errors.pattern">
+                                    <strong>DNI debe contener solo números</strong>
                                 </div>
                             </div>
                         </div>
