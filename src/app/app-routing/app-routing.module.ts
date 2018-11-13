@@ -10,6 +10,7 @@ import { PanelComponent} from '../panel/panel.component'
 import {AbogadoComponent} from '../CRUD/abogado/abogado.component'
 import {RegistrarAbogadoComponent} from '../CRUD/registrar-abogado/registrar-abogado.component'
 import {RegistrarUsuarioComponent} from '../CRUD/registrar-usuario/registrar-usuario.component'
+import { RegistrarEmpleadoComponent } from "../CRUD/registrar-empleado/registrar-empleado.component";
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'register-usu',
     component: RegistrarUsuarioComponent
+  },
+  {
+    path: 'register-employee',
+    component: RegistrarEmpleadoComponent
   }
 ];
 

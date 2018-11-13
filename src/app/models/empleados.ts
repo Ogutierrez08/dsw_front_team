@@ -1,11 +1,10 @@
 export interface EmpleadosInterface{
     id?: string;
-    nombre?: string;
+    nombres?: string;
     apellidos?:string;
     dni?:string;
     direccion?:string;
+    comentario?:string;
     area?:string;
     cargo?:string;
-    usuario?:string;
-    password?:string;
 }
