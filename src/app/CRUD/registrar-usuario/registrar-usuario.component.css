@@ -148,3 +148,14 @@ a{color:inherit;text-decoration:none}
 .foot-lnk{
 	text-align:center;
 }
+/*Configuraciones al Boton*/
+.group .aea{
+	background: #0f8b71;
+	border: none;
+
+	border-radius: 25px;
+	text-align: center;
+	margin-left: 3%;
+	height: 60px;
+	font-size: 18px;
+}

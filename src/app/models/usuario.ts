@@ -1,5 +1,5 @@
 export interface UsuarioInterface{
-    dni: number,
+    dni?: number,
     nombre:string,
     correo:string,
     clave:string,

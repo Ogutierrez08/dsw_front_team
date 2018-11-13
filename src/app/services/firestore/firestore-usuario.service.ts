@@ -24,7 +24,7 @@ export class FirestoreUsuarioService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post(this.usUrl,body,{headers}).pipe(map( rest =>{
+    return this.http.post(this.usUrl,body).pipe(map( rest =>{
         console.log(rest);
         return rest
     }));
