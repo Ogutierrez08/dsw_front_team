@@ -28,40 +28,41 @@
               <div class="hr"></div>
             </div>
             <div class="sign-up-htm ">
-              <form (ngSubmit)="guardar()" #forma="ngForm">
+              <form  #usu="ngForm" (ngSubmit)="guardar(usu)">
                 <div class="group">
                   <label for="user" class="label">Nombre</label>
-                  <input (click)="seleccionoInput()" [(ngModel)]="usu.nombre" name="nombre" id="qwe" type="text" class="input" placeholder="Ingrese Su Nombre"  required>
-                  <div *ngIf="nosaleTodavia" class="alert alert-danger text-center" role="alert">
+                  <input [(ngModel)]="usu.nombreUsuario"  #name="ngModel" name="nombreUsuario" id="qwe" type="text" class="input" placeholder="Ingrese Su Nombre"  required>
+                  <div *ngIf="name.touched && !name.valid" class="alert alert-danger text-center" role="alert">
                            Ingrese Nombre 
                     </div>
                 </div>
                 <div class="group">
                   <label for="pass" class="label">Apellido</label>
-                  <input (click)="seleccionoInput()" [(ngModel)]="usu.apellido" name="apellido" id="asd" type="text" class="input" placeholder="Ingrese Su Apellido" data-type="text" required>
-                  <div *ngIf="nosaleTodavia" class="alert alert-danger text-center" role="alert">
+                  <input  #ape="ngModel" [(ngModel)]="usu.apeUsuario" name="apeUsuario" id="asd" type="text" class="input" placeholder="Ingrese Su Apellido" data-type="text" required>
+                  <div *ngIf="ape.touched && !ape.valid" class="alert alert-danger text-center" role="alert">
                       Ingrese Apellido 
                </div>
                 </div>
                 <div class="group">
                   <label for="pass"  class="label">Dni </label>
-                  <input [(ngModel)]="usu.dni"   name="dni" id="asdd" type="number" class="input" placeholder="Ingrese Su Dni" data-type="text" required>
+                  <input [(ngModel)]="usu.dniUsuario"   name="dniUsuario" id="asdd" type="number" class="input" placeholder="Ingrese Su Dni" data-type="text" required>
+                 
                 </div>
                 <div class="group">
                   <label for="pass" class="label">Correo</label>
-                  <input [(ngModel)]="usu.correo" name="correo" id="text" type="text" class="input" placeholder="Ingrese Su Nombre" required>
+                  <input [(ngModel)]="usu.emailUsuario" name="emailUsuario" id="text" type="text" class="input" placeholder="Ingrese Su Nombre" required>
                 </div>
                 <div class="group">
                   <label for="pass" class="label">Contraseña</label>
-                  <input  [(ngModel)]="usu.clave" name="clave" id="paqwess" type="password" class="input" placeholder="Ingrese Su Contraseña"  required>
+                  <input  [(ngModel)]="usu.passUsuario" name="passUsuario" id="paqwess" type="password" class="input" placeholder="Ingrese Su Contraseña"  required>
                 </div>
                 <div class="group">
                   <label for="pass" class="label">Repita Contraseña</label>
-                  <input [(ngModel)]="usu.claveCopia" name="claveCopia" id="qweer" type="password" placeholder="Repita su Contraseña" class="input" required>
+                  <input [(ngModel)]="usu.passRepeat" name="passRepeat" id="qweer" type="password" placeholder="Repita su Contraseña" class="input" required>
                 </div>
                 <div class="group">
                    
-                  <button [disabled]="!forma.valid" type="submit" class="btn btn-block aea">Registrar </button>
+                  <button type="submit" class="btn btn-block aea">Registrar </button>
                 </div>
               </form>
 

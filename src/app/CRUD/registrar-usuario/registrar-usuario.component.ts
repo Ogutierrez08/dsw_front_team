@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreUsuarioService } from '../../services/firestore/firestore-usuario.service';
 import { UsuarioInterface } from '../../models/usuario';
-import { NgForm } from '@angular/forms';
+
+
 import { Router,ActivatedRoute } from '@angular/router';
+import { User } from 'firebase';
 
 
 
@@ -13,39 +15,47 @@ import { Router,ActivatedRoute } from '@angular/router';
 })
 export class RegistrarUsuarioComponent implements OnInit {
 
-  usu : UsuarioInterface ={
-    
-    nombre:'',
-    apellido:'',
-    clave:'',
-    claveCopia:'',
-    correo:''
-  }
+  // usu : UsuarioInterface ={
+  //   dniUsuario: '',
+  //   nombreUsuario:'',
+  //   apeUsuario:'',
+  //   passUsuario:'',
+  //   passRepeat:'',
+  //   emailUsuario:''
+
+  // };
+  public usu: UsuarioInterface;
   //variables que se usara para mostrar modales
   isRegister :boolean;
 
   //todosLosDatos: boolean=false;
   inputPush : boolean;
   constructor(private service:FirestoreUsuarioService, private activatedRoute:ActivatedRoute,private route:Router) { 
-    this.inputPush=false;
- 
+      this.usu ={
+        dniUsuario: "",
+        nombreUsuario:"",
+        apeUsuario:"",
+        passUsuario:"",
+        passRepeat:"",
+        emailUsuario:""
+      };
+      console.log(this.usu);
 
   }
          
   ngOnInit() {
     
   }
-  guardar(){
-   
+  guardar(form){
     this.service.registrarUsuario(this.usu)
-        .subscribe((data:any)=>{
-        
-          this.usu=data;
-          console.log(data);
-         
-        }, error =>{
-          console.log(error);
-        })
+    .subscribe( response => {
+      console.log(response);
+      
+   
+    }, error =>{
+      console.log(<any>error);
+    });
+   
   }
   seleccionoInput(){
     this.inputPush=true;
