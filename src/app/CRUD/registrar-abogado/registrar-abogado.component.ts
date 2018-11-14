@@ -15,7 +15,6 @@ import swal from 'sweetalert'
 	styleUrls: ['./registrar-abogado.component.css']
 })
 export class RegistrarAbogadoComponent implements OnInit {
-
 	ref: AngularFireStorageReference;
 	task: AngularFireUploadTask;
 	downloadURL: Observable<string>;
@@ -36,7 +35,6 @@ export class RegistrarAbogadoComponent implements OnInit {
 	constructor(private afStorage: AngularFireStorage, private abogadoService: FirestoreService) { }
 
 	guardarAbogado(myForm: NgForm) {
-
 		console.log(this.abogado.foto)
 		this.abogadoService.createAbogado(this.abogado, () => {
 			swal("Representante Legal", "Registrado", 'success').then((value) => {
@@ -59,7 +57,6 @@ export class RegistrarAbogadoComponent implements OnInit {
 
 				})
 			})
-
 		).subscribe()
 
 	}
@@ -175,5 +172,4 @@ export class RegistrarAbogadoComponent implements OnInit {
 			}
 		});
 	}
-
 }

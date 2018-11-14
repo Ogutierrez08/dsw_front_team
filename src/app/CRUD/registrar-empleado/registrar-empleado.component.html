@@ -12,7 +12,7 @@
             </div>
 
             <div style="height: 550px;">
-                <form id="msform" (ngSubmit)="guardarEmpleado(formNew)" #formNew="ngForm">
+                <form id="msform" (ngSubmit)="formNew.form.valid && guardarEmpleado(formNew)" #formNew="ngForm" novalidate>
                     <ul id="progressbar">
                         <li class="active">Informacion Personal</li>
                         <li>Informacion General</li>
@@ -21,10 +21,63 @@
                     <fieldset>
                         <h2 class="fs-title">Informacion Personal</h2>
                         <h3 class="fs-subtitle">Paso 1</h3>
-                        <input [(ngModel)]="empleado.nombres" #nombres="ngModel" type="text" placeholder="Nombres" name="nombres">
-                        <input [(ngModel)]="empleado.apellidos" #apellidos="ngModel" type="text" placeholder="Apellidos" name="apellidos">
-                        <input [(ngModel)]="empleado.dni" #dni="ngModel" type="text" placeholder="Dni" name="dni">
-                        <input [(ngModel)]="empleado.direccion" #direccion="ngModel" type="text" placeholder="Direccion" name="direccion">
+
+                        <input [(ngModel)]="empleado.nombres" #nombres="ngModel" type="text" placeholder="Nombres" name="nombres" class="form-control" required>
+                        <div *ngIf="formNew.touched && nombres.invalid" class="alert alert-danger" role="alert">
+                            <div class="row">
+                                <div class="col-1 alert-icon-col">
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </div>
+                                <div *ngIf="nombres.errors.required" class="col">
+                                    <strong>Nombres Requeridos</strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <input [(ngModel)]="empleado.apellidos" #apellidos="ngModel" type="text" placeholder="Apellidos" name="apellidos" class="form-control" required>
+                        <div *ngIf="formNew.touched && apellidos.invalid" class="alert alert-danger" role="alert">
+                            <div class="row">
+                                <div class="col-1 alert-icon-col">
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </div>
+                                <div *ngIf="apellidos.errors.required" class="col">
+                                    <strong>Apellidos Requeridos</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input [(ngModel)]="empleado.dni" #dni="ngModel" type="text" placeholder="Dni" name="dni" class="form-control" required minlength="8" maxlength="8" pattern="[0-9]+">
+                        <div *ngIf="formNew.touched && dni.invalid" class="alert alert-danger" role="alert">
+                            <div class="row">
+                                <div class="col-1 alert-icon-col">
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </div>
+                                <div *ngIf="dni.errors.required" class="col">
+                                    <strong>DNI Requerido</strong>
+                                </div>
+                                <div *ngIf="dni.errors.minlength">
+                                    <strong>DNI debe contener {{dni.errors.minlength.requiredLength}} caracteres</strong>
+                                </div>
+                                <div *ngIf="dni.errors.pattern">
+                                    <strong>DNI debe contener solo números</strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <input [(ngModel)]="empleado.direccion" #direccion="ngModel" type="text" placeholder="Direccion" name="direccion" class="form-control" required>
+                        <div *ngIf="formNew.touched && direccion.invalid" class="alert alert-danger" role="alert">
+                            <div class="row">
+                                <div class="col-1 alert-icon-col">
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </div>
+                                <div *ngIf="direccion.errors.required" class="col">
+                                    <strong>Direccion Requerida</strong>
+                                </div>
+                            </div>
+                        </div>
 
                         <input type="button" name="next" class="next action-button" value="Next" />
                     </fieldset>
@@ -32,16 +85,52 @@
                     <fieldset>
                         <h2 class="fs-title">Informacion General</h2>
                         <h3 class="fs-subtitle">Paso 2</h3>
-                        <input [(ngModel)]="empleado.area" #area="ngModel" type="text" placeholder="Area" name="area">
-                        <input [(ngModel)]="empleado.cargo" #cargo="ngModel" type="text" placeholder="Cargo" name="cargo">
-                        <textarea [(ngModel)]="empleado.comentario" #comentario="ngModel" name="comentario" placeholder="Comentarios"></textarea>
+                        <input [(ngModel)]="empleado.area" #area="ngModel" type="text" placeholder="Area" name="area" class="form-control" required>
+                        <div *ngIf="formNew.touched && area.invalid" class="alert alert-danger" role="alert">
+                            <div class="row">
+                                <div class="col-1 alert-icon-col">
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </div>
+                                <div *ngIf="area.errors.required" class="col">
+                                    <strong>Area Requerida</strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <input [(ngModel)]="empleado.cargo" #cargo="ngModel" type="text" placeholder="Cargo" name="cargo" class="form-control" required>
+                        <div *ngIf="formNew.touched && cargo.invalid" class="alert alert-danger" role="alert">
+                            <div class="row">
+                                <div class="col-1 alert-icon-col">
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </div>
+                                <div *ngIf="cargo.errors.required" class="col">
+                                    <strong>Cargo Requerido</strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <textarea [(ngModel)]="empleado.comentario" #comentario="ngModel" name="comentario" placeholder="Comentarios" required></textarea>
+                        <div *ngIf="formNew.touched && comentario.invalid" class="alert alert-danger" role="alert">
+                            <div class="row">
+                                <div class="col-1 alert-icon-col">
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </div>
+                                <div *ngIf="comentario.errors.required" class="col">
+                                    <strong>Cargo Requerido</strong>
+                                </div>
+                            </div>
+                        </div>
+
                         <input type="button" name="previous" class="previous action-button" value="Previous" />
                         <input type="submit" name="submit" class="submit action-button" value="Submit" />
                     </fieldset>
+
                 </form>
             </div>
         </div>
     </div>
-</section>
 
+</section>
 <app-footer></app-footer>
