@@ -62,6 +62,7 @@ import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     FormsModule,
+    ReactiveFormsModule,
     InputTextModule,
     ButtonModule,
     DialogModule,
