@@ -27,41 +27,79 @@
               </div>
               <div class="hr"></div>
             </div>
-            <div class="sign-up-htm ">
-              <form  #usu="ngForm" (ngSubmit)="guardar(usu)">
-                <div class="group">
+
+            <div class="sign-up-htm " >
+              <form [formGroup]="forma" (ngSubmit)="onSubmit()">
+                <div class="group" >
                   <label for="user" class="label">Nombre</label>
-                  <input [(ngModel)]="usu.nombreUsuario"  #name="ngModel" name="nombreUsuario" id="qwe" type="text" class="input" placeholder="Ingrese Su Nombre"  required>
-                  <div *ngIf="name.touched && !name.valid" class="alert alert-danger text-center" role="alert">
-                           Ingrese Nombre 
-                    </div>
+                  <input
+                          formControlName="nombreUsuario"
+                          type="text" 
+                          class="input"
+                          placeholder="Ingrese Su Nombre" >
+                    <!-- <div class="invalid-feedback ">
+                            <div *ngIf="nombreUsuario?.errors?.required ">
+                                Este campo es requerido
+                            </div>
+                            <div *ngIf="nombreUsuario?.errors?.minlength?.requiredLength ">
+                                Por lo menos 5 caracteres
+                            </div>
+                  </div> -->
                 </div>
                 <div class="group">
                   <label for="pass" class="label">Apellido</label>
-                  <input  #ape="ngModel" [(ngModel)]="usu.apeUsuario" name="apeUsuario" id="asd" type="text" class="input" placeholder="Ingrese Su Apellido" data-type="text" required>
-                  <div *ngIf="ape.touched && !ape.valid" class="alert alert-danger text-center" role="alert">
-                      Ingrese Apellido 
-               </div>
-                </div>
+                  <input  formControlName ="apeUsuario"
+                          type="text" 
+                          class="input"
+                          laceholder="Ingrese Su Apellido"
+                           data-type="text" >
+                     <div *ngIf="forma.get('nombreUsuario').errors?.required"
+                          class="form-control-feedback">
+                           El nombre es necesario.
+                    </div>  
+                      <div *ngIf="forma.get('apeUsuario').errors?.minlength"
+                           class="form-control-feedback">
+                                  Por lo menos 6 caracteres.
+                           </div>
+                       </div>
                 <div class="group">
-                  <label for="pass"  class="label">Dni </label>
-                  <input [(ngModel)]="usu.dniUsuario"   name="dniUsuario" id="asdd" type="number" class="input" placeholder="Ingrese Su Dni" data-type="text" required>
-                 
+                  <label for="pass" class="label">Dni </label>
+                  <input 
+                  formControlName ="dniUsuario"
+                   type="text" 
+                   class="input" 
+                   placeholder="Ingrese Su Dni"
+                    data-type="text"
+                    pattern="\d{1,9}" >
+              
                 </div>
                 <div class="group">
                   <label for="pass" class="label">Correo</label>
-                  <input [(ngModel)]="usu.emailUsuario" name="emailUsuario" id="text" type="text" class="input" placeholder="Ingrese Su Nombre" required>
+                  <input formControlName ="emailUsuario"
+                    id="text" 
+                    type="text" 
+                    class="input"
+                      placeholder="Ingrese Su Nombre" >
                 </div>
                 <div class="group">
                   <label for="pass" class="label">Contraseña</label>
-                  <input  [(ngModel)]="usu.passUsuario" name="passUsuario" id="paqwess" type="password" class="input" placeholder="Ingrese Su Contraseña"  required>
+                  <input formControlName ="passUsuario"
+                  
+                    id="xxxx" 
+                    type="password" 
+                    class="input"
+                    placeholder="Ingrese Su Contraseña" >
                 </div>
                 <div class="group">
                   <label for="pass" class="label">Repita Contraseña</label>
-                  <input [(ngModel)]="usu.passRepeat" name="passRepeat" id="qweer" type="password" placeholder="Repita su Contraseña" class="input" required>
+                    <input formControlName ="passRepeat"
+                      id="xxx" 
+                      type="password" 
+                      class="input"
+                  placeholder="Ingrese Su Contraseña" >
                 </div>
                 <div class="group">
-                   
+
                   <button type="submit" class="btn btn-block aea">Registrar </button>
                 </div>
               </form>
@@ -78,4 +116,3 @@
   </div>
 </section>
 <app-footer></app-footer>
-

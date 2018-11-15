@@ -12,22 +12,24 @@ export class FirestoreUsuarioService {
 
   public usUrl:string;
   constructor(private http:HttpClient) {
-    this.usUrl="http://localhost:50036/api/Usuario";
+    this.usUrl ="http://localhost:50036/api/Usuario/Registra";;
    }
 
   // Crud Usuario
-  
+
   // las url para hacer las peticiones
   // trae un json
   
   // esta url trae la lista de todos los usuarios
   //usuariosUrl :string ="https://integrador-a7bf2.firebaseio.com/usuarios/";
-
-  registrarUsuario(usuario): Observable<any> {
+  usuario : UsuarioInterface = null;
+  registrarUsuario(usuario): Observable<UsuarioInterface> {
     let body = JSON.stringify(usuario);
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(this.usUrl+'/Registra',body,{headers : headers});
-             
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(this.usUrl,body,{headers : headers});
+     
   }
   //el key es el identificado de cada usuario
   // actualizarUsuario(usuario: UsuarioInterface,key$:number){
