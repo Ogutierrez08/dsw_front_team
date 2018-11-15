@@ -1,11 +1,11 @@
-<section id="ListAbogados" style="background-image:url('assets/img/panorama-3094696_1920.jpg');">
-    <div class="rgba-black-strong py-5">
+<section id="ListAbogados" style="background-image:url('assets/img/panorama-3094696_1920.jpg'); height: 100%;">
+    <div class="rgba-black-strong py-5" style="height: 100%">
         <div class="container">
             <div class="wow fadeIn">
                 <h2 class="h1 text-white pt-5 pb-3 text-center">Empleados</h2>
                 <p class="text-white px-5 mb-5 pb-3 lead text-center">Relación de Empleados</p>
             </div>
-            <div class="table-users">
+            <div class="table-users" style="width: 100%">
                 <div class="header">Empleados</div>
                 <table cellspacing="0">
                     <thead>
@@ -31,7 +31,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <pagination-controls (pageChange)="p-$event" class="pagination"></pagination-controls>
+                <pagination-controls (pageChange)="p=$event" class="pagination" style="width: 100%"></pagination-controls>
             </div>
         </div>
     </div>
