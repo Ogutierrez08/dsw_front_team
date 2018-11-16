@@ -19,6 +19,8 @@ import {environment} from '../environments/environment'
 
 //Paginacion
 import {NgxPaginationModule} from 'ngx-pagination'
+// Validacion equals
+import { EqualValidator } from './CRUD/registrar-usuario/equal-validator';
 
 import { AppComponent } from './app.component';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -51,7 +53,8 @@ import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-
     RegistrarAbogadoComponent,
     RegistrarUsuarioComponent,
     EmpleadoComponent,
-    RegistrarEmpleadoComponent
+    RegistrarEmpleadoComponent,
+    EqualValidator
   ],
   imports: [
     BrowserModule,
