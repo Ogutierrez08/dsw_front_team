@@ -11,6 +11,8 @@ import { Observable } from 'rxjs/Observable';
 export class FirestoreUsuarioService {
 
   public usUrl:string;
+  public loginUrl ="http://localhost:50036/api/Usuario/Login?cuenta=" //aguilaPerez@gmail.com&pass=123654"
+
   constructor(private http:HttpClient) {
     this.usUrl ="http://localhost:50036/api/Usuario/Registra";;
    }
@@ -22,7 +24,8 @@ export class FirestoreUsuarioService {
   
   // esta url trae la lista de todos los usuarios
   //usuariosUrl :string ="https://integrador-a7bf2.firebaseio.com/usuarios/";
-  usuario : UsuarioInterface = null;
+
+  usuarioL : UsuarioInterface = null;
   registrarUsuario(usuario): Observable<UsuarioInterface> {
     let body = JSON.stringify(usuario);
     let headers = new HttpHeaders({
@@ -30,6 +33,16 @@ export class FirestoreUsuarioService {
     });
     return this.http.post(this.usUrl,body,{headers : headers});
      
+  }
+ 
+  loginUsuario(cuenta: string, pass:string): Observable<UsuarioInterface>{
+    //let body = JSON.stringify(usuario);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let url = `${this.loginUrl}${cuenta}&pass=${pass}`;
+    console.log(url);
+    return this.http.post(url,{headers:headers});
   }
   //el key es el identificado de cada usuario
   // actualizarUsuario(usuario: UsuarioInterface,key$:number){

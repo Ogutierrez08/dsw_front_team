@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FirestoreUsuarioService } from '../../services/firestore/firestore-usuario.service';
 import { UsuarioInterface } from '../../models/usuario';
+import { NgForm } from '@angular/forms';
 
 
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { FormGroup,FormControl,Validators,FormArray } from '@angular/forms';
 
 
 
@@ -25,18 +25,12 @@ export class RegistrarUsuarioComponent   {
   //   emailUsuario:''
 
   // };
-  usuario : UsuarioInterface ={
-       dniUsuario : "",
-      nombreUsuario : "",
-      apeUsuario : "",
-      emailUsuario : "",
-      passUsuario : "" ,
-      passRepeat : ""
-  };
+  usuario : UsuarioInterface;
+ // logUser : UsuarioInterface;
   //variables que se usara para mostrar modales
 
   //para el uso de validaciones
-  forma :FormGroup;
+  //forma :FormGroup;
 
   //todosLosDatos: boolean=false;
   isRegister:boolean;
@@ -44,56 +38,95 @@ export class RegistrarUsuarioComponent   {
   constructor(private service:FirestoreUsuarioService, private activatedRoute:ActivatedRoute,private route:Router) { 
     console.log(this.usuario);
 
-    this.forma = new FormGroup({
-        "dniUsuario" : new FormControl('',[ Validators.required,
-                                             Validators.maxLength(8)]),
-        "nombreUsuario" : new FormControl('Penecito123',[Validators.required,
-                                            Validators.minLength(6)]),
-        "apeUsuario" : new FormControl('',[Validators.required,
-                                            Validators.minLength(6)]),
-        "emailUsuario" : new FormControl('',[Validators.required,
-                                             Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]),
-        "passUsuario" : new FormControl('',[Validators.required,
-                                                Validators.minLength(6)]), 
-        "passRepeat" : new FormControl('',[Validators.required, Validators.minLength(6)])
+    this.usuario = <UsuarioInterface>{
 
-    })
-    // this.usuario = <UsuarioInterface>{
-
-    //   dniUsuario : "",
-    //   nombreUsuario : "",
-    //   apeUsuario : "",
-    //   emailUsuario : "",
-    //   passUsuario : "" ,
-    //   passRepeat : ""
-    // };
-
-
+        dniUsuario : "",
+        nombreUsuario : "",
+        apeUsuario : "",
+        emailUsuario : "",
+        passUsuario : "" ,
+        passRepeat : ""
+      }
+    // this.logUser = <UsuarioInterface>{
+    //   emailUsuario :"",
+    //   passUsuario:""
+    // }
+    
 
   }
-  
-  onSubmit(){
-   
-      console.log(this.forma.value)
-      console.log(this.forma);
-    //  this.service.registrarUsuario(this.usuario) 
-    //  .subscribe( data  => {
-    //       //this.usuario = data;
-    //       console.log(this.usuario);
-    //       this.usuario = data;
-    //       console.log("registrado");
-    
-         
-    //  }, err => console.log(err));
 
-    //  this.forma.reset({
-    //   dniUsuario : "",
-    //   nombreUsuario : "",
-    //   apeUsuario : "",
-    //   emailUsuario : "",
-    //   passUsuario : "" ,
-    //   passRepeat : ""
-    //   });
-   }
+
+  // noIgual (control : FormControl ): {[s:string]:boolean} {
+      // let forma:any = this;
+      // if(control.value !== forma.controls['passUsuario'].value){
+        // return {
+          // noiguales:true
+        // }
+      // }
+      // return null;
+
+  // }
+  onSubmit(fap: NgForm) : any {
+    if(!fap.valid==true){
+      console.log("formulario invalido")
+    }
+    else{
+     this.service.registrarUsuario(this.usuario) 
+     .subscribe( data  => {
+          //this.usuario = data;
+          // console.log(this.usuario);
+          // this.usuario = data;
+          console.log("registrado");
+         // forma.reset();
+         
+     }, err => console.log(err));
+     fap.reset();
+    }
+  }
+
+  loginUsuario(forma:NgForm):any{
+    
+    if(!forma.valid==true){
+      console.log("formulario login invalido")
+      console.log(forma);
+    }else{
+      this.service.loginUsuario(this.usuario.emailUsuario,this.usuario.passUsuario)
+        .subscribe(data =>{
+          console.log(data);
+          
+            this.route.navigate(['/about-us']);
+         
+            
+          
+        
+        }, err=> console.log(err))
+    }
+  }
+  noIgual( control: NgForm ): { [s:string]:boolean }  {
+
+    // console.log(this);
+    let forma:any = this;
+
+    if( control.value !== forma.controls['passUsuario'].value ){
+      return {
+        noiguales:true
+      }
+    }
+
+    return null;
+
+  }
+
+ }
+   // resetForm():void{
+    // this.forma.reset({
+      // dniUsuario : "",
+      // nombreUsuario : "",
+      // apeUsuario : "",
+      // emailUsuario : "",
+      // passUsuario : "" ,
+      // passRepeat : ""
+      // });
+   // }
  
-}
+
