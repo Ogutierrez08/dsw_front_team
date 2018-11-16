@@ -47,7 +47,7 @@ export class RegistrarUsuarioComponent   {
     this.forma = new FormGroup({
         "dniUsuario" : new FormControl('',[ Validators.required,
                                              Validators.maxLength(8)]),
-        "nombreUsuario" : new FormControl('Penecito123',[Validators.required,
+        "nombreUsuario" : new FormControl('',[Validators.required,
                                             Validators.minLength(6)]),
         "apeUsuario" : new FormControl('',[Validators.required,
                                             Validators.minLength(6)]),
