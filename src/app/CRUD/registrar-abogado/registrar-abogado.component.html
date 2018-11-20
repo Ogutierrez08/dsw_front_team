@@ -9,7 +9,7 @@
             </div>
 
             <div style="height: 550px;">
-                <form id="msform" (ngSubmit)="guardarAbogado(formNew)" #formNew="ngForm">
+                    <form id="msform" (ngSubmit)="formNew.form.valid && guardarAbogado(formNew)" #formNew="ngForm" novalidate>
 
                     <ul id="progressbar">
                         <li class="active">Informacion General</li>
@@ -20,9 +20,32 @@
                     <fieldset>
                         <h2 class="fs-title">Informacion General</h2>
                         <h3 class="fs-subtitle">Paso 1</h3>
-                        <input [(ngModel)]="abogado.email" #email="ngModel" type="email" name="email" placeholder="Email" />
-                        <input [(ngModel)]="abogado.especialidad" #especialidad="ngModel" type="text" name="espe" placeholder="Especialidad" />
+                            <input [(ngModel)]="abogado.email" #email="ngModel" type="email" name="email"
+                            [ngClass] = "{'is-invalid':formNew.submitted && email.invalid}"
+                            class="form-control"
+                            placeholder="Email" required email/>
+                            <div *ngIf="formNew.touched && email.invalid" class="alert alert-danger" role="alert">
+                            <div class="row">
+                            <div class="col-1 alert-icon-col">
+                            <i class="fa fa-exclamation-circle"></i>
+                            </div>
+                                <div *ngIf="email.errors.required" class="col"><strong>Email Requerido</strong></div>
+                                <div *ngIf="email.errors.email" class="col"><strong>Formato de email invalido</strong></div>
+                            </div>
+                            </div>
 
+                            <input [(ngModel)]="abogado.especialidad" #especialidad="ngModel" type="text" name="espe"
+                            [ngClass] = "{'is-invalid':formNew.submitted && especialidad.invalid}"
+                            class="form-control"
+                            placeholder="Especialidad" required/>
+                            <div *ngIf="formNew.touched && especialidad.invalid" class="alert alert-danger" role="alert">
+                                <div class="row">
+                                <div class="col-1 alert-icon-col">
+                                <i class="fa fa-exclamation-circle"></i>
+                            </div>
+                                <div *ngIf="especialidad.errors.required" class="col"><strong>Especialidad Requerida</strong></div>
+                            </div>
+                            </div>
 
                         <div class="row center">
                             <div class="col center">
@@ -56,10 +79,55 @@
                     <fieldset>
                         <h2 class="fs-title">Informacion Personal</h2>
                         <h3 class="fs-subtitle">Paso 3</h3>
-                        <input [(ngModel)]="abogado.nombres" #nombres="ngModel" type="text" name="fname" placeholder="Nombres" />
-                        <input [(ngModel)]="abogado.apellidos" #apellidos="ngModel" type="text" name="lname" placeholder="Apellidos" />
-                        <input [(ngModel)]="abogado.telefono" #telefono="ngModel" type="text" name="phone" placeholder="Telefono" />
-                        <textarea [(ngModel)]="abogado.comentarios" #comentarios="ngModel" name="comentarios" placeholder="Comentarios"></textarea>
+                        <input [(ngModel)]="abogado.nombres" #nombres="ngModel" type="text" 
+                        [ngClass] = "{'is-invalid':formNew.submitted && nombres.invalid}"
+                        class="form-control"
+                        name="fname" placeholder="Nombres" required/>
+                        <div *ngIf="formNew.touched && nombres.invalid" class="alert alert-danger" role="alert">
+                          <div class="row">
+                          <div class="col-1 alert-icon-col">
+                          <i class="fa fa-exclamation-circle"></i>
+                        </div>
+                            <div *ngIf="nombres.errors.required" class="col"><strong>Nombre es un campo obligatorio</strong></div>
+                      </div>
+                        </div>
+                    
+                        
+                        <input [(ngModel)]="abogado.apellidos" #apellidos="ngModel" type="text" 
+                        name="lname" placeholder="Apellidos" required/>
+                        <div *ngIf="formNew.touched && apellidos.invalid" class="alert alert-danger" role="alert">
+                          <div class="row">
+                          <div class="col-1 alert-icon-col">
+                          <i class="fa fa-exclamation-circle"></i>
+                        </div>
+                            <div *ngIf="apellidos.errors.required" class="col"><strong>Apellidos es un campo obligatorio</strong></div>
+                      </div>
+                        </div>
+                    
+                    
+                    
+                        <input [(ngModel)]="abogado.telefono" #telefono="ngModel" type="text" name="phone" 
+                        placeholder="Telefono" required />
+                        
+                        <div *ngIf="formNew.touched && telefono.invalid" class="alert alert-danger" role="alert">
+                          <div class="row">
+                          <div class="col-1 alert-icon-col">
+                          <i class="fa fa-exclamation-circle"></i>
+                        </div>
+                            <div *ngIf="telefono.errors.required" class="col"><strong>Telefono es un campo obligatorio</strong></div>
+                      </div>
+                        </div>
+                    
+                        <textarea [(ngModel)]="abogado.comentarios" #comentarios="ngModel" name="comentarios"
+                         placeholder="Comentarios" required></textarea>
+                        <div *ngIf="formNew.touched && comentarios.invalid" class="alert alert-danger" role="alert">
+                          <div class="row">
+                          <div class="col-1 alert-icon-col">
+                          <i class="fa fa-exclamation-circle"></i>
+                        </div>
+                            <div *ngIf="comentarios.errors.required" class="col"><strong>Se debe registrar comentarios</strong></div>
+                      </div>
+                        </div>
                         <input type="button" name="previous" class="previous action-button" value="Previous" />
                         <input type="submit" name="submit" class="submit action-button" value="Submit" />
                     </fieldset>

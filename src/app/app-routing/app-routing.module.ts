@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutUsComponent } from './../about-us/about-us.component';
@@ -11,6 +11,7 @@ import {AbogadoComponent} from '../CRUD/abogado/abogado.component'
 import {RegistrarAbogadoComponent} from '../CRUD/registrar-abogado/registrar-abogado.component'
 import {RegistrarUsuarioComponent} from '../CRUD/registrar-usuario/registrar-usuario.component'
 import { RegistrarEmpleadoComponent } from "../CRUD/registrar-empleado/registrar-empleado.component";
+import { EmpleadoComponent } from '../CRUD/empleado/empleado.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'contact-us',
-    component: AbogadoComponent
+    component: ContactUsComponent
   },
   {
     path: 'register-rl',
@@ -48,6 +49,15 @@ const routes: Routes = [
   {
     path: 'register-employee',
     component: RegistrarEmpleadoComponent
+  },
+  {
+    path:'list-employees',
+    component:EmpleadoComponent
+  },
+  {
+    path:'list-abogados',
+    component:AbogadoComponent
+  
   }
 ];
 

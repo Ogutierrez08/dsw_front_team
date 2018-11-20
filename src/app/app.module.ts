@@ -5,6 +5,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 //Servicios
 import { MessageService } from './services/message.service';
 import {FirestoreService} from './services/firestore/firestore.service'
+import {FirestoreUsuarioService} from './services/firestore/firestore-usuario.service'
 
 import {InputTextModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
@@ -18,6 +19,8 @@ import {environment} from '../environments/environment'
 
 //Paginacion
 import {NgxPaginationModule} from 'ngx-pagination'
+// Validacion equals
+import { EqualValidator } from './CRUD/registrar-usuario/equal-validator';
 
 import { AppComponent } from './app.component';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -50,7 +53,8 @@ import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-
     RegistrarAbogadoComponent,
     RegistrarUsuarioComponent,
     EmpleadoComponent,
-    RegistrarEmpleadoComponent
+    RegistrarEmpleadoComponent,
+    EqualValidator
   ],
   imports: [
     BrowserModule,
@@ -61,12 +65,14 @@ import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     FormsModule,
+    ReactiveFormsModule,
     InputTextModule,
     ButtonModule,
     DialogModule,
     NgxPaginationModule
   ],
-  providers: [MessageService,FirestoreService,AngularFirestore],
+  providers: [MessageService,FirestoreService,AngularFirestore,
+    FirestoreUsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

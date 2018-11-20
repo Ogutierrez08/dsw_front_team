@@ -31,6 +31,7 @@
     "primeng": "^6.1.4",
     "promise-polyfill": "^8.1.0",
     "rxjs": "~6.2.0",
+    "rxjs-compat": "^6.3.3",
     "sweetalert": "^2.1.0",
     "zone.js": "~0.8.26"
   },
