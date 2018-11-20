@@ -1,61 +1,133 @@
 <section id="ListAbogados" style="background-image:url('https://searchengineland.com/figz/wp-content/seloads/2016/11/persona-customer-audience-ss-1920.jpg');">
-  <div class="rgba-black-strong py-5" >
-      <div>
-          <div class="wow fadeIn">
-            <h2 class="h1 text-white pt-5 pb-3 text-center">Registro de Usuarios</h2>
-          </div>
-<div class="login-wrap">
-    <div class="login-html">
-      <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Ingresa</label>
-      <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrate</label>
-      <div class="login-form">
-        <div class="sign-in-htm">
-          <div class="group">
-            <label for="user" class="label">Username</label>
-            <input id="user" type="text" class="input">
-          </div>
-          <div class="group">
-            <label for="pass" class="label">Password</label>
-            <input id="pass" type="password" class="input" data-type="password">
-          </div>
-          <div class="group">
-            <input id="check" type="checkbox" class="check" checked>
-            <label for="check"><span class="icon"></span> Keep me Signed in</label>
-          </div>
-          <div class="group">
-            <input type="submit" class="button" value="Sign In">
-          </div>
-          <div class="hr"></div>
-        </div>
-        <div class="sign-up-htm">
-          <div class="group">
-            <label for="user" class="label">Username</label>
-            <input id="user" type="text" class="input">
-          </div>
-          <div class="group">
-            <label for="pass" class="label">Password</label>
-            <input id="pass" type="password" class="input" data-type="password">
-          </div>
-          <div class="group">
-            <label for="pass" class="label">Repeat Password</label>
-            <input id="pass" type="password" class="input" data-type="password">
-          </div>
-          <div class="group">
-            <label for="pass" class="label">Email Address</label>
-            <input id="pass" type="text" class="input">
-          </div>
-          <div class="group">
-            <input type="submit" class="button" value="Sign Up">
-          </div>
-          <div class="hr"></div>
-          <div class="foot-lnk">
-            <label for="tab-1">Already Member?</label>
+  <div class="rgba-black-strong py-5">
+    <div>
+      <div class="wow fadeIn">
+        <h2 class="h1 text-white pt-5 pb-3 text-center">Registro de Usuarios</h2>
+      </div>
+      <div class="login-wrap">
+        <div class="login-html">
+          <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Ingresa</label>
+          <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrate</label>
+          <div class="login-form">
+            <div class="sign-in-htm">
+                <form (ngSubmit)="loginUsuario(fap)" #fap="ngForm">
+              <div class="group">
+                <label for="user" class="label">Email</label>
+                <input [(ngModel)]="usuario.emailUsuario" #mailito="ngModel" name="mailito" id="user" type="text" class="input" required>
+                <div *ngIf="mailito.touched && !mailito.valid" class="">
+                    <div *ngIf="mailito.errors.required" class="kaketa">Este campo es requerido</div>
+                   
+                  </div>
+              </div>
+              <div class="group">
+                <label for="pass" class="label">Password</label>
+                <input [(ngModel)]="usuario.passUsuario" #pasito="ngModel" name="pasito" id="pass" type="password" class="input" data-type="password" required>
+                <div *ngIf="pasito.touched && !pasito.valid" class="" >
+                    <div *ngIf="pasito.errors.required" class="kaketa">Este campo es requerido</div>
+                   
+                  </div>
+              
+              </div>
+              <div class="group">
+                <input id="check" type="checkbox" class="check" checked>
+                <label for="check"><span class="icon"></span> Keep me Signed in</label>
+              </div>
+              <div class="group">
+                  <button type="submit" class="btn btn-block aea">Acceder  </button>
+              </div>
+            </form>
+              <div class="hr"></div>
+            </div>
+
+            <div class="sign-up-htm ">
+              <form (ngSubmit)="onSubmit(forma)" #forma="ngForm">
+                <div class="group">
+                  <label for="user" class="label">Nombre</label>
+                  <input [(ngModel)]="usuario.nombreUsuario" #nombre="ngModel" name="nombre" type="text" class="input" placeholder="Ingrese Su Nombre"
+                    minlength="3" required>
+                  <div *ngIf="nombre.touched && !nombre.valid " class="">
+                    <div *ngIf="nombre.errors.required " class="kaketa">Este campo es requerido </div>
+                    <div *ngIf="nombre.errors.minlength" class="kaketa">Este campo require minimo 3 caracteres</div>
+
+                  </div>
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">Apellido</label>
+                  <input [(ngModel)]="usuario.apeUsuario" #apellido="ngModel" name="apellido" type="text" class="input" laceholder="Ingrese Su Apellido"
+                    data-type="text" minlength="4" required>
+                  <div *ngIf="apellido.touched && !apellido.valid" class="">
+                    <div *ngIf="apellido.errors.required" class="kaketa">Este campo es requerido</div>
+                    <div *ngIf="apellido.errors.minlength" class="kaketa">Este campo requiere minimo 4 caracteres</div>
+                  
+                  </div>
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">Dni </label>
+                  <input [(ngModel)]="usuario.dniUsuario" #dni="ngModel" name="dni" type="text" class="input" placeholder="Ingrese Su Dni"
+                    data-type="text" maxlength="8" pattern="[0-9]{8}" required>
+                  <div *ngIf="dni.touched && !dni.valid" class="">
+                    <div *ngIf="dni.errors.required" class="kaketa">Este campo es requerido</div>
+                    <div *ngIf="dni.errors.pattern " class="kaketa">Formato Incorrecto 8 Caracteres</div>
+                  </div>
+
+
+
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">Correo</label>
+                  <input [(ngModel)]="usuario.emailUsuario" #email="ngModel" name="email" id="text" type="text" class="input"
+                    placeholder="Ingrese Su Nombre"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" maxlength="30" required>
+                  <div *ngIf="email.touched && !email.valid" class="">
+                    <div *ngIf="email.errors.required" class="kaketa">Este campo es requerido</div>
+                    <div *ngIf="email.errors.pattern" class="kaketa">Formato Incorrecto</div>
+                  </div>
+
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">Contraseña</label>
+                  <input [(ngModel)]="usuario.passUsuario" #pass="ngModel" name="contrasena" id="xxxx" type="password" class="input"
+                    placeholder="Ingrese Su Contraseña" required>
+                  <div *ngIf="pass.touched && !pass.valid" class="">
+                    <div *ngIf="pass.errors.required" class="kaketa">Este campo es requerido</div>
+                  </div>
+                  <!-- <small [hidden]="pass.valid || (pass.pristine && !f.submitted)" class="kaketa">
+                    Password is required
+                </small> -->
+
+
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">Repita Contraseña</label>
+                  <input [(ngModel)]="usuario.passRepeat" #passrepe="ngModel" name="contrasenar" id="xxx" type="password" class="input"
+                    placeholder="Ingrese Su Contraseña"  required>
+                  <div *ngIf="passrepe.touched && !passrepe.valid" class="">
+                    <div *ngIf="passrepe.errors.required" class="kaketa">Este campo es requerido</div>
+                    <!-- <div *ngIf="passrepe.errors.required validateEqual" class="kaketa">La contraseña no es igual</div> -->
+                  </div>
+                  <!-- <small [hidden]="passrepe.valid ||  (passrepe.pristine && !f.submitted)" class="kaketa">
+                    Password mismatch
+                </small> -->
+
+                  <!-- <div *ngIf="forma.controls['passRepeat'].errors?.noiguales" -->
+                  <!-- class="form-control-feedback kaketa"> -->
+                  <!-- Contraseña no Coincide -->
+                  <!-- </div> -->
+                </div>
+                <div class="group">
+
+                  <button type="submit" class="btn btn-block aea">Registrar </button>
+                </div>
+              </form>
+              <!-- -->
+              <div class="hr"></div>
+              <div class="foot-lnk">
+                <label for="tab-1">Already Member?</label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-</div>
 </section>
 <app-footer></app-footer>
