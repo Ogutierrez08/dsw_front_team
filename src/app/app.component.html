@@ -15,9 +15,9 @@
                        
                         <li class="nav-item"><a class="nav-link" routerLink="register-employee">Empleados</a></li>
                         <li class="nav-item"><a class="nav-link" routerLink="list-employees">List Empleados</a></li>
-                        <li class="nav-item" style="color: white" *ngIf="auth.isAuthenticated()" > {{profile?.name}}</li>
-                        <li class="nav-item"><a class="nav-link" *ngIf="!auth.isAuthenticated()" (click)="login()" >Login</a></li>
-                        <li class="nav-item"><a class="nav-link"  *ngIf="auth.isAuthenticated()" (click)="salir()" >Salir</a></li>
+              
+                        <li class="nav-item"><a class="nav-link" routerLink="register-usu"  >Login</a></li>
+                      
                     </ul>
                 </div>
             </div>
