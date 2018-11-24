@@ -53,7 +53,8 @@ const routes: Routes = [
   {
     path:'list-employees',
     component:EmpleadoComponent
-  }
+  },
+  { path: '**', pathMatch:'full' , redirectTo:'about-us'}
 ];
 
 @NgModule({
