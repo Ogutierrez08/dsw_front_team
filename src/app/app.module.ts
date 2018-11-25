@@ -39,6 +39,9 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { EmpleadoComponent } from './CRUD/empleado/empleado.component';
 import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-empleado.component';
 
+//import el auth
+import { AuthService } from './services/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +75,8 @@ import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-
     NgxPaginationModule
   ],
   providers: [MessageService,FirestoreService,AngularFirestore,
-    FirestoreUsuarioService],
+    FirestoreUsuarioService,
+    AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

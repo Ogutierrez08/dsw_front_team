@@ -53,8 +53,74 @@ export class RegistrarUsuarioComponent   {
     // }
     
 
+
   }
 
+
+  // noIgual (control : FormControl ): {[s:string]:boolean} {
+      // let forma:any = this;
+      // if(control.value !== forma.controls['passUsuario'].value){
+        // return {
+          // noiguales:true
+        // }
+      // }
+      // return null;
+
+  // }
+  onSubmit(fap: NgForm) : any {
+    if(!fap.valid==true){
+      alert("Rellene los campos vacios o mal formato");
+    } else if(this.usuario.passUsuario != this.usuario.passRepeat){
+      alert("Las contraseñas no son iguales");
+    }
+    else{
+     this.service.registrarUsuario(this.usuario) 
+     .subscribe( data  => {
+          //this.usuario = data;
+          // console.log(this.usuario);
+          // this.usuario = data;
+          console.log(data);
+          alert(data);
+         // forma.reset();
+         
+     }, err => console.log(err));
+     fap.reset();
+    }
+  }
+
+  loginUsuario(forma:NgForm):any{
+    
+    if(!forma.valid==true){
+     alert("Por favor ingrese en los campos obligatorios usuario/contraseña")
+      //console.log(forma);
+    }else{
+      this.service.loginUsuario(this.usuario.emailUsuario,this.usuario.passUsuario)
+        .subscribe(data =>{
+
+          if(data =="Ingreso Exitoso, Usuario y Contraseña Correctas"){
+            alert(data);
+            this.route.navigate(['/about-us']);
+          }else{
+            alert(data);
+            this.route.navigate(['/register-usu']);
+          }
+
+        }, err=> console.log(err))
+    }
+  }
+  noIgual( control: NgForm ): { [s:string]:boolean }  {
+
+
+    // console.log(this);
+    let forma:any = this;
+
+    if( control.value !== forma.controls['passUsuario'].value ){
+      return {
+        noiguales:true
+      }
+    }
+
+    return null;
 
   // noIgual (control : FormControl ): {[s:string]:boolean} {
       // let forma:any = this;
@@ -84,38 +150,7 @@ export class RegistrarUsuarioComponent   {
     }
   }
 
-  loginUsuario(forma:NgForm):any{
-    
-    if(!forma.valid==true){
-      console.log("formulario login invalido")
-      console.log(forma);
-    }else{
-      this.service.loginUsuario(this.usuario.emailUsuario,this.usuario.passUsuario)
-        .subscribe(data =>{
-          console.log(data);
-          
-            this.route.navigate(['/about-us']);
-         
-            
-          
-        
-        }, err=> console.log(err))
-    }
-  }
-  noIgual( control: NgForm ): { [s:string]:boolean }  {
 
-    // console.log(this);
-    let forma:any = this;
-
-    if( control.value !== forma.controls['passUsuario'].value ){
-      return {
-        noiguales:true
-      }
-    }
-
-    return null;
-
-  }
 
  }
    // resetForm():void{
