@@ -53,6 +53,7 @@ export class RegistrarUsuarioComponent   {
     // }
     
 
+
   }
 
 
@@ -109,6 +110,7 @@ export class RegistrarUsuarioComponent   {
   }
   noIgual( control: NgForm ): { [s:string]:boolean }  {
 
+
     // console.log(this);
     let forma:any = this;
 
@@ -120,7 +122,35 @@ export class RegistrarUsuarioComponent   {
 
     return null;
 
+  // noIgual (control : FormControl ): {[s:string]:boolean} {
+      // let forma:any = this;
+      // if(control.value !== forma.controls['passUsuario'].value){
+        // return {
+          // noiguales:true
+        // }
+      // }
+      // return null;
+
+  // }
+  onSubmit(fap: NgForm) : any {
+    if(!fap.valid==true){
+      console.log("formulario invalido")
+    }
+    else{
+     this.service.registrarUsuario(this.usuario) 
+     .subscribe( data  => {
+          //this.usuario = data;
+          // console.log(this.usuario);
+          // this.usuario = data;
+          console.log("registrado");
+         // forma.reset();
+         
+     }, err => console.log(err));
+     fap.reset();
+    }
   }
+
+
 
  }
    // resetForm():void{

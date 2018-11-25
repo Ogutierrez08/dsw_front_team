@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutUsComponent } from './../about-us/about-us.component';
@@ -36,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'contact-us',
-    component: AbogadoComponent
+    component: ContactUsComponent
   },
   {
     path: 'register-rl',
@@ -54,7 +54,9 @@ const routes: Routes = [
     path:'list-employees',
     component:EmpleadoComponent
   },
+
   { path: '**', pathMatch:'full' , redirectTo:'about-us'}
+
 ];
 
 @NgModule({
