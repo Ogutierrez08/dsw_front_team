@@ -6,6 +6,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from './services/message.service';
 import {FirestoreService} from './services/firestore/firestore.service'
 import {FirestoreUsuarioService} from './services/firestore/firestore-usuario.service'
+import {SunatService} from './services/sunat.service'
 
 import {InputTextModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
@@ -41,6 +42,7 @@ import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-
 
 //import el auth
 import { AuthService } from './services/auth.service';
+import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { AuthService } from './services/auth.service';
     RegistrarUsuarioComponent,
     EmpleadoComponent,
     RegistrarEmpleadoComponent,
-    EqualValidator
+    EqualValidator,
+    ValidaSunatComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,7 @@ import { AuthService } from './services/auth.service';
   ],
   providers: [MessageService,FirestoreService,AngularFirestore,
     FirestoreUsuarioService,
-    AuthService],
+    AuthService,SunatService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

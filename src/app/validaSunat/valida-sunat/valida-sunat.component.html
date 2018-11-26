@@ -1,0 +1,23 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<form (ngSubmit)="sunatValida(ruc.value)" #ruc="ngForm">
+    <div class="md-form">
+        <input class="form-control" id="ruc" type="text" name="ruc" required="required" ngModel/>
+        <label for="name">Ingresa tu RUC a validar</label>
+      </div>
+      <div class="center-on-small-only mb-4">
+          <button class="btn btn-indigo ml-0" type="submit"><i class="fa fa-paper-plane-o mr-2"></i>Validar</button>
+        </div>
+</form>
+
+    <div *ngIf="response">
+        <p>{{response.rucData.razon_social}}</p>
+        <p>{{response.rucData.domicilio_fiscal}}</p>
+        <p>{{response.rucData.contribuyente_tipo}}</p>
+        <p>{{response.rucData.fecha_inscripcion}}</p>
+    </div>
+          
+       

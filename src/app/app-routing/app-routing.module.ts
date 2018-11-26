@@ -12,6 +12,7 @@ import {RegistrarAbogadoComponent} from '../CRUD/registrar-abogado/registrar-abo
 import {RegistrarUsuarioComponent} from '../CRUD/registrar-usuario/registrar-usuario.component'
 import { RegistrarEmpleadoComponent } from "../CRUD/registrar-empleado/registrar-empleado.component";
 import { EmpleadoComponent } from '../CRUD/empleado/empleado.component';
+import {ValidaSunatComponent} from 'src/app/validaSunat/valida-sunat/valida-sunat.component'
 
 const routes: Routes = [
   {
@@ -54,9 +55,14 @@ const routes: Routes = [
     path:'list-employees',
     component:EmpleadoComponent
   },
+  {
+    path:'valida-ruc',
+    component:ValidaSunatComponent
 
+  },
   { path: '**', pathMatch:'full' , redirectTo:'about-us'}
-
+  
+  
 ];
 
 @NgModule({
