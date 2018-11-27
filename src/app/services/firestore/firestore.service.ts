@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable } from 'rxjs';
 import {AbogadosInterface} from 'src/app/models/abogados'
 import { EmpleadosInterface } from 'src/app/models/empleados';
+import { DemandaInterface } from 'src/app/models/demanda';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,12 @@ export class FirestoreService {
 
   empleadoColecction: AngularFirestoreCollection<EmpleadosInterface>
 
+  demandaColecction: AngularFirestoreCollection<DemandaInterface>
+
   constructor(private firestore: AngularFirestore) { 
   this.abogadosColecction = firestore.collection<AbogadosInterface>('abogados');
   this.empleadoColecction = firestore.collection<EmpleadosInterface>('empleados');
+  this.demandaColecction = firestore.collection<DemandaInterface>('demanda')
   }
 
   public createAbogado(abogado:AbogadosInterface, onSuccess:Function){
@@ -51,6 +55,20 @@ export class FirestoreService {
 
   public getEmpleados(){
     return this.firestore.collection('empleados').snapshotChanges();
+  }
+
+  /**
+   * Demanda - CRUD
+   */
+  public crearDemanda(demanda:DemandaInterface, onSuccess:Function){
+    this.demandaColecction.add(demanda).then((value)=>{
+      console.log('value',value);
+      onSuccess();
+    });
+  }
+
+  public getDemanda(){
+    return this.firestore.collection('demanda').snapshotChanges();
   }
 
 }
