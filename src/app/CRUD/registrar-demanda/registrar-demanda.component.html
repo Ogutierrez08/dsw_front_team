@@ -16,54 +16,55 @@
             </div>
 
             <div style="height: 550px;">
-
                 <form id="msform" (ngSubmit)="formNew.form.valid && guardarDemanda(formNew)" #formNew="ngForm" novalidate>
-                    <fieldset>
-                        <!-- RUC -->
-                        <input [(ngModel)]="demanda.ruc" type="text" name="ruc" placeholder="RUC" class="form-control" #ruc="ngModel" required>
-                        <!-- <div *ngIf="formNew.touched && ruc.invalid" class="alert alert-danger" role="alert">
-                            <div class="row">
-                                <div class="col-1 alert-icon-col">
-                                    <i class="fa fa-exclamation-circle"></i>
-                                </div>
-                                <div *ngIf="ruc.errors.required" class="col">
-                                    <strong>Ruc Requerido</strong>
-                                </div>
+                    <!-- RUC -->
+                    <input [(ngModel)]="demanda.ruc" type="text" name="ruc" placeholder="RUC" class="form-control" #ruc="ngModel" required pattern="[1-9][0-9]+" minlength="11" maxlength="11">
+                    <div *ngIf="formNew.touched && ruc.invalid" class="alert alert-danger" role="alert">
+                        <div class="row">
+                            <div class="col-1 alert-icon-col">
+                                <i class="fa fa-exclamation-circle"></i>
                             </div>
-                        </div> -->
+                            <div *ngIf="ruc.errors.required" class="col">
+                                <strong>Ruc Requerido</strong>
+                            </div>
+                            <div *ngIf="ruc.errors.minlength">
+                                <strong>RUC debe contener {{ruc.errors.minlength.requiredLength}} caracteres</strong>&nbsp;
+                            </div>
+                            <div *ngIf="ruc.errors.pattern">
+                                <strong> RUC debe empezar con 1 o 2</strong>
+                            </div>
+                        </div>
+                    </div>
 
-                        <!-- PETITORIO -->
-                        <input [(ngModel)]="demanda.petitorio" type="text" name="petitorio" placeholder="PETITORIO" class="form-control" #ruc="ngModel" required minlength="1" pattern="[0-9]+">
-                        <!-- <div *ngIf="formNew.touched && petitorio.invalid" class="alert alert-danger" role="alert">
+                    <!-- PETITORIO -->
+                    <input [(ngModel)]="demanda.petitorio" type="text" name="petitorio" placeholder="Petitorio" class="form-control" #ruc="ngModel" required pattern="[0-9]+" minlength="1">
+                    <!-- <div *ngIf="formNew.touched && petitorio.invalid" class="alert alert-danger" role="alert">
                             <div class="row">
                                 <div class="col-1 alert-icon-col">
                                     <i class="fa fa-exclamation-circle"></i>
                                 </div>
                                 <div *ngIf="petitorio.errors.required" class="col">
-                                    <strong>PETITORIO Requerido</strong>
-                                </div>
-                                <div *ngIf="petitorio.errors.minlength">
-                                    <strong>Petitorio debe contener por lo menos {{petitorio.errors.minlength.requiredLength}} número</strong>
+                                    <strong>Petitorio Requerido</strong>
                                 </div>
                                 <div *ngIf="petitorio.errors.pattern">
-                                    <strong>Petitorio debe contener solo números</strong>
+                                    <strong> Petitorio debe contener solo números</strong>
                                 </div>
                             </div>
                         </div> -->
-                        <!-- COMENTARIO -->
-                        <textarea [(ngModel)]="demanda.comentario" #comentario="ngModel" name="comentario" placeholder="Comentarios" required></textarea>
-                        <!-- <div *ngIf="formNew.touched && comentario.invalid" class="alert alert-danger" role="alert">
-                            <div class="row">
-                                <div class="col-1 alert-icon-col">
-                                    <i class="fa fa-exclamation-circle"></i>
-                                </div>
-                                <div *ngIf="comentario.errors.required" class="col">
-                                    <strong>Comentario Requerido</strong>
-                                </div>
+
+                    <!-- COMENTARIO -->
+                    <textarea [(ngModel)]="demanda.comentario" #comentario="ngModel" name="comentario" placeholder="Comentarios" required></textarea>
+                    <div *ngIf="formNew.touched && comentario.invalid" class="alert alert-danger" role="alert">
+                        <div class="row">
+                            <div class="col-1 alert-icon-col">
+                                <i class="fa fa-exclamation-circle"></i>
                             </div>
-                        </div> -->
-                        <input type="submit" name="submit" class="submit action-button" value="Submit" />
-                    </fieldset>
+                            <div *ngIf="comentario.errors.required" class="col">
+                                <strong>Comentario Requerido</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" name="submit" class="submit action-button" value="Submit" />
                 </form>
             </div>
         </div>

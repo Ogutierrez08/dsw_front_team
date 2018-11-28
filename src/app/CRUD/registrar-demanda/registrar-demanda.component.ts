@@ -19,7 +19,7 @@ export class RegistrarDemandaComponent implements OnInit {
   demanda: DemandaInterface = {
     ruc: '',
     petitorio: '',
-    comentario: ''
+    comentario: '',
   };
 
 
