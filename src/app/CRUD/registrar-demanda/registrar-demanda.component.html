@@ -1,0 +1,72 @@
+<section id="ListDemanda" style="background-image:url('https://www.esan.edu.pe/conexion/actualidad/2017/08/28/1500x844_corporativo.jpg'); height: 900px;">
+
+    <div class="rgba-black-strong py5" style="height: 100%">
+        <div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="wow fadeIn">
+                <h2 class="h1 text-white pt-5 pb-3 text-center">
+                    Demanda
+                </h2>
+                <p class="text-white px-5 pb-3 lead text-center">
+                    Registro de Demanda
+                </p>
+            </div>
+
+            <div style="height: 550px;">
+
+                <form id="msform" (ngSubmit)="formNew.form.valid && guardarDemanda(formNew)" #formNew="ngForm" novalidate>
+                    <fieldset>
+                        <!-- RUC -->
+                        <input [(ngModel)]="demanda.ruc" type="text" name="ruc" placeholder="RUC" class="form-control" #ruc="ngModel" required>
+                        <!-- <div *ngIf="formNew.touched && ruc.invalid" class="alert alert-danger" role="alert">
+                            <div class="row">
+                                <div class="col-1 alert-icon-col">
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </div>
+                                <div *ngIf="ruc.errors.required" class="col">
+                                    <strong>Ruc Requerido</strong>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- PETITORIO -->
+                        <input [(ngModel)]="demanda.petitorio" type="text" name="petitorio" placeholder="PETITORIO" class="form-control" #ruc="ngModel" required minlength="1" pattern="[0-9]+">
+                        <!-- <div *ngIf="formNew.touched && petitorio.invalid" class="alert alert-danger" role="alert">
+                            <div class="row">
+                                <div class="col-1 alert-icon-col">
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </div>
+                                <div *ngIf="petitorio.errors.required" class="col">
+                                    <strong>PETITORIO Requerido</strong>
+                                </div>
+                                <div *ngIf="petitorio.errors.minlength">
+                                    <strong>Petitorio debe contener por lo menos {{petitorio.errors.minlength.requiredLength}} número</strong>
+                                </div>
+                                <div *ngIf="petitorio.errors.pattern">
+                                    <strong>Petitorio debe contener solo números</strong>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- COMENTARIO -->
+                        <textarea [(ngModel)]="demanda.comentario" #comentario="ngModel" name="comentario" placeholder="Comentarios" required></textarea>
+                        <!-- <div *ngIf="formNew.touched && comentario.invalid" class="alert alert-danger" role="alert">
+                            <div class="row">
+                                <div class="col-1 alert-icon-col">
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </div>
+                                <div *ngIf="comentario.errors.required" class="col">
+                                    <strong>Comentario Requerido</strong>
+                                </div>
+                            </div>
+                        </div> -->
+                        <input type="submit" name="submit" class="submit action-button" value="Submit" />
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

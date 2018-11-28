@@ -14,6 +14,10 @@ import { RegistrarEmpleadoComponent } from "../CRUD/registrar-empleado/registrar
 import { EmpleadoComponent } from '../CRUD/empleado/empleado.component';
 import {ValidaSunatComponent} from 'src/app/validaSunat/valida-sunat/valida-sunat.component'
 
+import { RegistrarDemandaComponent } from '../CRUD/registrar-demanda/registrar-demanda.component';
+import { DemandaComponent } from '../CRUD/demanda/demanda.component';
+
+
 const routes: Routes = [
   {
     path:'',
@@ -60,6 +64,15 @@ const routes: Routes = [
     component:ValidaSunatComponent
 
   },
+  {
+    path:'register-demand',
+    component:RegistrarDemandaComponent
+  },
+  {
+    path:'list-demand',
+    component:DemandaComponent
+  },
+
   { path: '**', pathMatch:'full' , redirectTo:'about-us'}
   
   
