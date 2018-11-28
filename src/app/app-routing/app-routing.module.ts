@@ -13,8 +13,10 @@ import {RegistrarUsuarioComponent} from '../CRUD/registrar-usuario/registrar-usu
 import { RegistrarEmpleadoComponent } from "../CRUD/registrar-empleado/registrar-empleado.component";
 import { EmpleadoComponent } from '../CRUD/empleado/empleado.component';
 import {ValidaSunatComponent} from 'src/app/validaSunat/valida-sunat/valida-sunat.component'
+
 import { RegistrarDemandaComponent } from '../CRUD/registrar-demanda/registrar-demanda.component';
 import { DemandaComponent } from '../CRUD/demanda/demanda.component';
+
 
 const routes: Routes = [
   {
@@ -70,6 +72,7 @@ const routes: Routes = [
     path:'list-demand',
     component:DemandaComponent
   },
+
   { path: '**', pathMatch:'full' , redirectTo:'about-us'}
   
   

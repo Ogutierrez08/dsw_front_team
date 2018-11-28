@@ -6,6 +6,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from './services/message.service';
 import {FirestoreService} from './services/firestore/firestore.service'
 import {FirestoreUsuarioService} from './services/firestore/firestore-usuario.service'
+import {SunatService} from './services/sunat.service'
 
 import {InputTextModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
@@ -42,6 +43,10 @@ import { RegistrarDemandaComponent } from './CRUD/registrar-demanda/registrar-de
 import { DemandaComponent } from './CRUD/demanda/demanda.component';
 import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.component';
 
+//import el auth
+import { AuthService } from './services/auth.service';
+import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,8 +63,10 @@ import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.co
     EmpleadoComponent,
     RegistrarEmpleadoComponent,
     EqualValidator,
+
     RegistrarDemandaComponent,
     DemandaComponent,
+
     ValidaSunatComponent
   ],
   imports: [
@@ -78,7 +85,8 @@ import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.co
     NgxPaginationModule
   ],
   providers: [MessageService,FirestoreService,AngularFirestore,
-    FirestoreUsuarioService],
+    FirestoreUsuarioService,
+    AuthService,SunatService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
