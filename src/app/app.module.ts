@@ -45,7 +45,6 @@ import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.co
 
 //import el auth
 import { AuthService } from './services/auth.service';
-import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.component';
 
 @NgModule({
   declarations: [
