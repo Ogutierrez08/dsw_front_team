@@ -44,8 +44,8 @@ import { DemandaComponent } from './CRUD/demanda/demanda.component';
 import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.component';
 
 //import el auth
-import { AuthService } from './services/auth.service';
-import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.component';
+//import { AuthService } from './services/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -85,8 +85,9 @@ import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.co
     NgxPaginationModule
   ],
   providers: [MessageService,FirestoreService,AngularFirestore,
-    FirestoreUsuarioService,
-    AuthService,SunatService],
+    FirestoreUsuarioService
+    //,AuthService
+    ,SunatService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
