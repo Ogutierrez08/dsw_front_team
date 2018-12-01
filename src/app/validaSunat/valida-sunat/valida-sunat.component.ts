@@ -46,7 +46,7 @@ export class ValidaSunatComponent implements OnInit {
         swal("Validacion de datos", "el ruc existe en sunat", 'success')
         console.log(JSON.stringify(data))
         this.demanda.razon_social = this.response.rucData.razon_social;
-        this.demanda.tipo_contribuyente = this.response.rucData.tipo_contribuyente;
+        this.demanda.tipo_contribuyente = this.response.rucData.contribuyente_tipo;
         this.demanda.fecha_inscripcion = this.response.rucData.fecha_inscripcion;
         this.demanda.domicilio_fiscal = this.response.rucData.domicilio_fiscal;
         this.demanda.ruc = this.response.rucData.ruc;
