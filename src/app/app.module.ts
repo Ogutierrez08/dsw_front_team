@@ -39,7 +39,6 @@ import { RegistrarUsuarioComponent } from './CRUD/registrar-usuario/registrar-us
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { EmpleadoComponent } from './CRUD/empleado/empleado.component';
 import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-empleado.component';
-import { RegistrarDemandaComponent } from './CRUD/registrar-demanda/registrar-demanda.component';
 import { DemandaComponent } from './CRUD/demanda/demanda.component';
 import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.component';
 
@@ -64,7 +63,6 @@ import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.co
     RegistrarEmpleadoComponent,
     EqualValidator,
 
-    RegistrarDemandaComponent,
     DemandaComponent,
 
     ValidaSunatComponent
