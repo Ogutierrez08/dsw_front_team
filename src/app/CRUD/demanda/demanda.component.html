@@ -1,0 +1,31 @@
+<section id="ListEmpleados" style="background-image:url('assets/img/panorama-3094696_1920.jpg'); height: 100%;">
+    <div class="rgba-black-strong py-5" style="height: 100%">
+        <div class="container">
+            <div class="wow fadeIn">
+                <h2 class="h1 text-white pt-5 pb-3 text-center">Demandas</h2>
+                <p class="text-white px-5 mb-5 pb-3 lead text-center">Relación de Demandas</p>
+            </div>
+            <div class="table-users" style="width: 100%;">
+                <div class="header">Demandas</div>
+                <table cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Ruc</th>
+                            <th>Petitorio</th>
+                            <th width="230">Comentario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let demanda of demanda | paginate:{itemsPerPage:3, currentPage:p}">
+                            <td>{{demanda.data.ruc}}</td>
+                            <td>{{demanda.data.petitorio}}</td>
+                            <td>{{demanda.data.comentario}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="p=$event" class="pagination" style="width: 100%"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

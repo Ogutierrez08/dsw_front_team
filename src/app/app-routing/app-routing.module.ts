@@ -12,6 +12,11 @@ import {RegistrarAbogadoComponent} from '../CRUD/registrar-abogado/registrar-abo
 import {RegistrarUsuarioComponent} from '../CRUD/registrar-usuario/registrar-usuario.component'
 import { RegistrarEmpleadoComponent } from "../CRUD/registrar-empleado/registrar-empleado.component";
 import { EmpleadoComponent } from '../CRUD/empleado/empleado.component';
+import {ValidaSunatComponent} from 'src/app/validaSunat/valida-sunat/valida-sunat.component'
+
+import { RegistrarDemandaComponent } from '../CRUD/registrar-demanda/registrar-demanda.component';
+import { DemandaComponent } from '../CRUD/demanda/demanda.component';
+
 
 const routes: Routes = [
   {
@@ -55,10 +60,22 @@ const routes: Routes = [
     component:EmpleadoComponent
   },
   {
-    path:'list-abogados',
-    component:AbogadoComponent
+    path:'valida-ruc',
+    component:ValidaSunatComponent
+
+  },
+  {
+    path:'register-demand',
+    component:RegistrarDemandaComponent
+  },
+  {
+    path:'list-demand',
+    component:DemandaComponent
+  },
+
+  { path: '**', pathMatch:'full' , redirectTo:'about-us'}
   
-  }
+  
 ];
 
 @NgModule({

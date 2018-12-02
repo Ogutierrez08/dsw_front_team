@@ -6,6 +6,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from './services/message.service';
 import {FirestoreService} from './services/firestore/firestore.service'
 import {FirestoreUsuarioService} from './services/firestore/firestore-usuario.service'
+import {SunatService} from './services/sunat.service'
 
 import {InputTextModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
@@ -38,6 +39,13 @@ import { RegistrarUsuarioComponent } from './CRUD/registrar-usuario/registrar-us
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { EmpleadoComponent } from './CRUD/empleado/empleado.component';
 import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-empleado.component';
+import { RegistrarDemandaComponent } from './CRUD/registrar-demanda/registrar-demanda.component';
+import { DemandaComponent } from './CRUD/demanda/demanda.component';
+import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.component';
+
+//import el auth
+//import { AuthService } from './services/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +62,12 @@ import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-
     RegistrarUsuarioComponent,
     EmpleadoComponent,
     RegistrarEmpleadoComponent,
-    EqualValidator
+    EqualValidator,
+
+    RegistrarDemandaComponent,
+    DemandaComponent,
+
+    ValidaSunatComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +85,9 @@ import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-
     NgxPaginationModule
   ],
   providers: [MessageService,FirestoreService,AngularFirestore,
-    FirestoreUsuarioService],
+    FirestoreUsuarioService
+    //,AuthService
+    ,SunatService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
