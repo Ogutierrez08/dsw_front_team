@@ -27,6 +27,10 @@ const routes: Routes = [
     component: AboutUsComponent
   },
   {
+    path: 'list-abogados',
+    component: AbogadoComponent
+  },
+  {
     path: 'projects',
     component: ProjectsComponent
   },
