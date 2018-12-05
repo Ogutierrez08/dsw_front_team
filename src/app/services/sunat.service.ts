@@ -6,7 +6,7 @@ import { HttpClient} from '@angular/common/http'
 })
 export class SunatService {
 
-  constructor(private _http:HttpClient) { }
+  constructor(private _http:HttpClient) {}
 
   informationValid(ruc){
     return this._http.post('http://localhost:2193/public/getRucData',ruc)

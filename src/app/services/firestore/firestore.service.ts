@@ -5,6 +5,7 @@ import {AbogadosInterface} from 'src/app/models/abogados'
 import { EmpleadosInterface } from 'src/app/models/empleados';
 import { DemandaInterface } from 'src/app/models/demanda';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +16,8 @@ export class FirestoreService {
   empleadoColecction: AngularFirestoreCollection<EmpleadosInterface>
 
   demandaColecction: AngularFirestoreCollection<DemandaInterface>
+
+  
 
   constructor(private firestore: AngularFirestore) { 
   this.abogadosColecction = firestore.collection<AbogadosInterface>('abogados');
@@ -70,5 +73,7 @@ export class FirestoreService {
   public getDemanda(){
     return this.firestore.collection('demanda').snapshotChanges();
   }
+
+  
 
 }
