@@ -78,6 +78,15 @@ export class FirestoreService {
     return this.firestore.collection('demanda').snapshotChanges();
   }
 
+  public deleteDemanda(documentId: string,onSuccess){
+    this.demandaColecction.doc(documentId).delete().then(()=>{
+      onSuccess()
+    })
+  }
+  
+  /*
+    * Cotizacion - CRUD
+  */
   public crearCotizacion(cotizacion:Cotizacion, onSuccess:Function){
     this.cotizacionColecction.add(cotizacion).then((value)=>{
       console.log('value',value);

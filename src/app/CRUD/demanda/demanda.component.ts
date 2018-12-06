@@ -144,9 +144,11 @@ export class DemandaComponent implements OnInit {
   guardarCoti(){
     console.log(this.cotizacion)
     this.firestoreService.crearCotizacion(this.cotizacion, () => {
-      swal("Cotizacion", "Registrada","success").then((value) =>{
-        location.reload();
-        this.sendCoti('1')
+      swal("Cotizacion", "Registrada","success").then(() =>{
+        this.firestoreService.deleteDemanda(this.demanda.id,()=>{
+          location.reload();
+          this.sendCoti('1')
+        })
       });
     });
   }
@@ -155,5 +157,21 @@ export class DemandaComponent implements OnInit {
     this.asignarCotizacion(()=>{
       this.guardarCoti()
     })
+  }
+
+  rechazarCotizacion(){
+    this.messageError(()=>{
+      location.reload()
+    })
+  }
+
+  messageError(onSuccess){
+    swal("Cotizacion","Rechazada","error").then(()=>{
+      this.firestoreService.deleteDemanda(this.demanda.id,()=>{
+        this.sendCoti('-1')
+        onSuccess()
+      })
+    })
+    
   }
 }
