@@ -7,48 +7,48 @@
             </div>
             <div class="card mb-5 wow fadeInUp" data-wow-delay=".4s">
                 <div class="card-body p-5">
-                  <div class="row">
-                    <div class="col-md-8">
-                        <form (ngSubmit)="guardarDemandaAsig(form)" #form="ngForm">
-                             <div class="md-form"> 
-                                    <input class="form-control" placeholder="Comentario" [(ngModel)]="demanda.comentario"  readonly="readonly" id="comentario" type="text" name="comentario" required="required" ngModel/>
-                                    
-                                    </div>
-      
-                                     <div class="md-form">
-                                         <input class="form-control" placeholder="Petitorio" [(ngModel)]="demanda.petitorio" readonly="readonly" id="petitorio" type="text" name="petitorio" required="required" ngModel/>
-                                          
-                                      </div>
-      
-                                     <div class="md-form" style="display: none">
-                                                      <input class="form-control" placeholder="Ruc" [(ngModel)]="demanda.ruc"  readonly="readonly" id="ruc" type="text" name="ruc" required="required" ngModel/>
-                                                     
-                                                  </div>
-                                                  <div class="md-form">
-                                                      <input class="form-control" placeholder="Razon Social" [(ngModel)]="demanda.razon_social" readonly="readonly"  id="razon_social" type="text" name="razon_social" required="required" ngModel/>
-                                                     
-                                                  </div>
-                                                  <div class="md-form">
-                                                          <input class="form-control" placeholder="domicilio Fiscal" [(ngModel)]="demanda.domicilio_fiscal" readonly="readonly"  id="domicilio_fiscal" type="text" name="domicilio_fiscal" required="required" ngModel/>
-                                                         
-                                                  </div>
-                                                  <div class="md-form">
-                                                          <input class="form-control" placeholder="Tipo de contribuyente" [(ngModel)]="demanda.tipo_contribuyente" readonly="readonly"  id="contribuyente_tipo" type="text" name="contribuyente_tipo" required="required" ngModel/>
-                                                    
-                                                </div>
-                                           <div class="md-form">
-                                                          <input class="form-control" placeholder="Fecha de Incripcion" [(ngModel)]="demanda.fecha_inscripcion" readonly="readonly"  id="fecha_inscripcion" type="text" name="fecha_inscripcion" required="required" ngModel/>
-                                                          
-                                          </div>    
-                                      
-                                          <div class="center-on-small-only mb-4">
-                                              <button class="btn btn-indigo ml-0" type="submit"><i class="fa fa-paper-plane-o mr-2"></i>Registrar</button>
-                                          </div>
-                                      </form>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <form (ngSubmit)="guardarDemandaAsig(form)" #form="ngForm">
+                                <div class="md-form">
+                                    <input class="form-control" placeholder="Comentario" [(ngModel)]="demanda.comentario" readonly="readonly" id="comentario" type="text" name="comentario" required="required" ngModel/>
+
+                                </div>
+
+                                <div class="md-form">
+                                    <input class="form-control" placeholder="Petitorio" [(ngModel)]="demanda.petitorio" readonly="readonly" id="petitorio" type="text" name="petitorio" required="required" ngModel/>
+
+                                </div>
+
+                                <div class="md-form" style="display: none">
+                                    <input class="form-control" placeholder="Ruc" [(ngModel)]="demanda.ruc" readonly="readonly" id="ruc" type="text" name="ruc" required="required" ngModel/>
+
+                                </div>
+                                <div class="md-form">
+                                    <input class="form-control" placeholder="Razon Social" [(ngModel)]="demanda.razon_social" readonly="readonly" id="razon_social" type="text" name="razon_social" required="required" ngModel/>
+
+                                </div>
+                                <div class="md-form">
+                                    <input class="form-control" placeholder="domicilio Fiscal" [(ngModel)]="demanda.domicilio_fiscal" readonly="readonly" id="domicilio_fiscal" type="text" name="domicilio_fiscal" required="required" ngModel/>
+
+                                </div>
+                                <div class="md-form">
+                                    <input class="form-control" placeholder="Tipo de contribuyente" [(ngModel)]="demanda.tipo_contribuyente" readonly="readonly" id="contribuyente_tipo" type="text" name="contribuyente_tipo" required="required" ngModel/>
+
+                                </div>
+                                <div class="md-form">
+                                    <input class="form-control" placeholder="Fecha de Incripcion" [(ngModel)]="demanda.fecha_inscripcion" readonly="readonly" id="fecha_inscripcion" type="text" name="fecha_inscripcion" required="required" ngModel/>
+
+                                </div>
+
+                                <div class="center-on-small-only mb-4">
+                                    <button class="btn btn-indigo ml-0" type="submit"><i class="fa fa-paper-plane-o mr-2"></i>Registrar</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </div>
 
             <div class="table-users" style="width: 100%;">
                 <div class="header">Demandas</div>
@@ -81,7 +81,6 @@
                 <pagination-controls (pageChange)="p=$event" class="pagination" style="width: 100%"></pagination-controls>
             </div>
         </div>
-        <app-combo-representantes></app-combo-representantes>
     </div>
 </section>
 <app-footer></app-footer>
