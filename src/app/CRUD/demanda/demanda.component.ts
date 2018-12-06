@@ -5,6 +5,8 @@ import { NgForm } from "@angular/forms";
 import { AbogadosInterface } from 'src/app/models/abogados';
 import { Cotizacion } from 'src/app/models/cotizacion';
 import { element } from '@angular/core/src/render3/instructions';
+import swal from 'sweetalert'
+import {CotiMessageService} from 'src/app/services/coti-message.service'
 
 @Component({
   selector: 'app-demanda',
@@ -49,11 +51,16 @@ export class DemandaComponent implements OnInit {
     apellidos: '',
     nombres: ''
   };
+
+  cotiEnvio = {
+    Id:'',
+    valor:''
+  }
   
 
   public Lstabogado = []
 
-  constructor(private firestoreService: FirestoreService) { }
+  constructor(private firestoreService: FirestoreService , private _CotiService : CotiMessageService) { }
 
   ngOnInit() {
     this.firestoreService.getDemanda().subscribe((demandaSnapShot)=>{
@@ -80,12 +87,31 @@ export class DemandaComponent implements OnInit {
     
   }
 
+  cotiMessage(valor,onSuccess){
+    this.cotiEnvio.Id = this.demanda.id
+    this.cotiEnvio.valor = valor
+    onSuccess()
+  }
+
+  send(){
+    this._CotiService.sendCotiMessage(this.cotiEnvio).subscribe(()=>{
+      swal("Formulario de contacto","Enviado mensaje correctamente",'success')
+    })
+  }
+
+  sendCoti(valor){
+    this.cotiMessage(valor,()=>{
+      this.send()
+    })
+  }
+
   getDemandaId(event,asigDemanda) {
     this.response = asigDemanda
     console.log(JSON.stringify(this.response))
     if(this.response.data.ruc==""){
       console.log("vacio")
     }else{
+      this.demanda.id = this.response.id
       this.demanda.ruc = this.response.data.ruc
       this.demanda.razon_social = this.response.data.razon_social
       this.demanda.petitorio = this.response.data.petitorio
@@ -115,18 +141,19 @@ export class DemandaComponent implements OnInit {
     })
   }
 
-  guardarDemanda(){
+  guardarCoti(){
     console.log(this.cotizacion)
     this.firestoreService.crearCotizacion(this.cotizacion, () => {
       swal("Cotizacion", "Registrada","success").then((value) =>{
         location.reload();
+        this.sendCoti('1')
       });
     });
   }
 
   guardarCotizacion(){
     this.asignarCotizacion(()=>{
-      this.guardarDemanda()
+      this.guardarCoti()
     })
   }
 }
