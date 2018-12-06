@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from "src/app/services/firestore/firestore.service";
 import { DemandaInterface } from 'src/app/models/demanda';
 import { NgForm } from "@angular/forms";
+import { AbogadosInterface } from 'src/app/models/abogados';
+import { element } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-demanda',
@@ -20,6 +22,23 @@ export class DemandaComponent implements OnInit {
     razon_social:'',
     tipo_contribuyente:''
   };
+
+  abogado: AbogadosInterface = {
+		apellidos: '',
+		comentarios: '',
+		email: '',
+		especialidad: '',
+		facebook: '',
+		foto: '',
+		google: '',
+		nombres: '',
+		telefono: '',
+		twitter: '',
+
+	};
+
+  public Lstabogado = []
+
   constructor(private firestoreService: FirestoreService) { }
 
   ngOnInit() {
@@ -32,6 +51,19 @@ export class DemandaComponent implements OnInit {
         });
       });
     });
+
+    this.firestoreService.getAbogados().subscribe((abogadoSnapShot)=>{
+      this.Lstabogado = [];
+      abogadoSnapShot.forEach((abogadoData:any)=>{
+        this.Lstabogado.push({
+          id: abogadoData.payload.doc.id,
+          data: abogadoData.payload.doc.data()
+        });
+      });
+      console.log(this.Lstabogado)
+    });
+
+    
   }
 
   getDemandaId(event,asigDemanda) {
@@ -54,4 +86,9 @@ export class DemandaComponent implements OnInit {
     console.log(this.demanda)
   }
 
+  getAbogadoId(event,asigAbog){
+    this.firestoreService.getAbogado(asigAbog).subscribe(data =>{
+      this.abogado = data.payload.data()
+    })
+  }
 }

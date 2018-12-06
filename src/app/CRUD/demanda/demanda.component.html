@@ -39,16 +39,37 @@
                                            <div class="md-form">
                                                           <input class="form-control" placeholder="Fecha de Incripcion" [(ngModel)]="demanda.fecha_inscripcion" readonly="readonly"  id="fecha_inscripcion" type="text" name="fecha_inscripcion" required="required" ngModel/>
                                                           
-                                          </div>    
+                                            </div>    
                                       
                                           <div class="center-on-small-only mb-4">
                                               <button class="btn btn-indigo ml-0" type="submit"><i class="fa fa-paper-plane-o mr-2"></i>Registrar</button>
                                           </div>
                                       </form>
-                    </div>
-                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <ul class="list-unstyled text-center">
+
+                                            <select class="form-control" [(ngModel)]="abogado" id="abogado" name="abogado">
+                                                   <option *ngFor="let abog of Lstabogado" [value]="abog.id">
+                                                    {{abog.data.nombres}} {{abog.data.apellidos}}
+                                                </option>  
+                                            </select>
+                                            
+                                            <div class="md-form">
+                                                    <input class="form-control" placeholder="Nombre representante legal" [(ngModel)]="abogado.nombres" readonly="readonly"  id="nombres" type="text" name="nombres" required="required" ngModel/> 
+                                            </div>
+                                            <div class="md-form">
+                                                    <input class="form-control" placeholder="Apellido representante legal" [(ngModel)]="abogado.apellidos" readonly="readonly"  id="apellidos" type="text" name="apellidos" required="required" ngModel/> 
+                                            </div>  
+                                            <div class="center-on-small-only mb-4">
+                                                <button (click)="getAbogadoId($event,abogado)" class="btn btn-indigo ml-0" type="submit"><i class="fa fa-paper-plane-o mr-2"></i>Asignar</button>
+                                            </div>
+                    
+                                    </ul>
+                                  </div>
+                            </div>
+                         </div>
                 </div>
-              </div>
 
             <div class="table-users" style="width: 100%;">
                 <div class="header">Demandas</div>
