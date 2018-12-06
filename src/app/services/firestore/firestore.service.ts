@@ -85,5 +85,7 @@ export class FirestoreService {
     });
   }
   
-
+  public listarCotizacion(){
+    return this.firestore.collection('cotizacion').snapshotChanges();
+  }
 }

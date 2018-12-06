@@ -15,6 +15,7 @@ import { EmpleadoComponent } from '../CRUD/empleado/empleado.component';
 import {ValidaSunatComponent} from 'src/app/validaSunat/valida-sunat/valida-sunat.component'
 
 import { DemandaComponent } from '../CRUD/demanda/demanda.component';
+import { CotizacionComponent } from '../CRUD/cotizacion/cotizacion.component';
 
 
 const routes: Routes = [
@@ -70,6 +71,10 @@ const routes: Routes = [
   {
     path:'list-demand',
     component:DemandaComponent
+  },
+  {
+    path:'list-cotizacion',
+    component:CotizacionComponent
   },
 
   { path: '**', pathMatch:'full' , redirectTo:'about-us'}
