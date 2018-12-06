@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {AbogadosInterface} from 'src/app/models/abogados'
 import { EmpleadosInterface } from 'src/app/models/empleados';
 import { DemandaInterface } from 'src/app/models/demanda';
+import { Cotizacion } from 'src/app/models/cotizacion';
 
 
 @Injectable({
@@ -17,12 +18,15 @@ export class FirestoreService {
 
   demandaColecction: AngularFirestoreCollection<DemandaInterface>
 
+  cotizacionColecction: AngularFirestoreCollection<Cotizacion>
+
   
 
   constructor(private firestore: AngularFirestore) { 
   this.abogadosColecction = firestore.collection<AbogadosInterface>('abogados');
   this.empleadoColecction = firestore.collection<EmpleadosInterface>('empleados');
   this.demandaColecction = firestore.collection<DemandaInterface>('demanda')
+  this.cotizacionColecction = firestore.collection<Cotizacion>('cotizacion')
   }
 
   public createAbogado(abogado:AbogadosInterface, onSuccess:Function){
@@ -74,6 +78,12 @@ export class FirestoreService {
     return this.firestore.collection('demanda').snapshotChanges();
   }
 
+  public crearCotizacion(cotizacion:Cotizacion, onSuccess:Function){
+    this.cotizacionColecction.add(cotizacion).then((value)=>{
+      console.log('value',value);
+      onSuccess();
+    });
+  }
   
 
 }

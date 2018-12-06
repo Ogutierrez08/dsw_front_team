@@ -9,7 +9,6 @@
                 <div class="card-body p-5">
                   <div class="row">
                     <div class="col-md-8">
-                        <form (ngSubmit)="guardarDemandaAsig(form)" #form="ngForm">
                              <div class="md-form"> 
                                     <input class="form-control" placeholder="Comentario" [(ngModel)]="demanda.comentario"  readonly="readonly" id="comentario" type="text" name="comentario" required="required" ngModel/>
                                     
@@ -42,9 +41,9 @@
                                             </div>    
                                       
                                           <div class="center-on-small-only mb-4">
-                                              <button class="btn btn-indigo ml-0" type="submit"><i class="fa fa-paper-plane-o mr-2"></i>Registrar</button>
+                                              <button class="btn btn-indigo ml-0" (click)="guardarCotizacion()" type="submit"><i class="fa fa-paper-plane-o mr-2"></i>Registrar</button>
                                           </div>
-                                      </form>
+                                      
                                 </div>
                                 <div class="col-md-4">
                                     <ul class="list-unstyled text-center">
