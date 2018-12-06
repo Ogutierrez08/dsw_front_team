@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FirestoreService} from 'src/app/services/firestore/firestore.service'
+import {SendCotizacionService} from 'src/app/services/send-cotizacion.service'
+import swal from 'sweetalert'
+import { Cotizacion } from 'src/app/models/cotizacion';
 
 @Component({
   selector: 'app-cotizacion',
@@ -10,7 +13,12 @@ export class CotizacionComponent implements OnInit {
 
   public cotizacion = [];
 
-  constructor( private firestoreService: FirestoreService) { }
+  coti = {
+    id:''
+  };
+
+
+  constructor( private firestoreService: FirestoreService,private _Service:SendCotizacionService) { }
 
   ngOnInit() {
     this.firestoreService.listarCotizacion().subscribe((cotizacionSnapshot)=>{
@@ -22,5 +30,24 @@ export class CotizacionComponent implements OnInit {
         });
       });
     });
+  }
+
+  sendCotizacion(event,cotiValor){
+    this.asigParametro(cotiValor,()=>{
+     this.enviarCorreo(()=>{
+       swal('Cotizacion enviada','exitosamente','success')
+     })
+    })
+  }
+
+  asigParametro(cotiza,onSuccess){
+    this.coti.id = cotiza.id
+    onSuccess()
+  }
+
+  enviarCorreo(onSuccess){
+    console.log(this.coti)
+    this._Service.sendMessage(this.coti).subscribe()
+    onSuccess()
   }
 }
