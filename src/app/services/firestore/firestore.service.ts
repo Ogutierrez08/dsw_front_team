@@ -79,6 +79,10 @@ export class FirestoreService {
     return this.firestore.collection('demanda').snapshotChanges();
   }
 
+  /**
+   * Cotizacion - CRUD
+   */
+
   public crearCotizacion(cotizacion:Cotizacion, onSuccess:Function){
     this.cotizacionColecction.add(cotizacion).then((value)=>{
       console.log('value',value);
@@ -86,5 +90,8 @@ export class FirestoreService {
     });
   }
   
+  public listarCotizacion(){
+    return this.firestore.collection('cotizacion').snapshotChanges();
+  }
 
 }

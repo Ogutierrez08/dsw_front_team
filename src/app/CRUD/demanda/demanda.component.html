@@ -9,6 +9,7 @@
                 <div class="card-body p-5">
                     <div class="row">
                         <div class="col-md-8">
+                            <h2>Demanda: </h2>
                             <div class="md-form">
                                 <input class="form-control" placeholder="Comentario" [(ngModel)]="demanda.comentario" readonly="readonly" id="comentario" type="text" name="comentario" required="required" ngModel/>
 
@@ -47,7 +48,7 @@
                         </div>
                         <div class="col-md-4">
                             <ul class="list-unstyled text-center">
-
+                                <h2>Abogados: </h2>
                                 <select class="form-control" [(ngModel)]="abogado" id="abogado" name="abogado">
                                                    <option *ngFor="let abog of Lstabogado" [value]="abog.id">
                                                     {{abog.data.nombres}} {{abog.data.apellidos}}

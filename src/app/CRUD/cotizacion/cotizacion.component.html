@@ -1,0 +1,47 @@
+<section id="ListCotizaciones" style="background-image:url('assets/img/panorama-3094696_1920.jpg'); height: 100%">
+    <div class="rgba-black-strong py-5" style="height: 100%">
+        <div class="container">
+            <div class="wow fadeIn">
+                <h2 class="h1 text-white pt-5 pb-3 text-center">Cotizaciones</h2>
+                <p class="text-white px-5 mb-5 pb-3 lead text-center">
+                    Relacion de Cotizaciones Registradas
+                </p>
+            </div>
+
+            <div class="table-users" style="width: 100%">
+                <div class="header">Abogados</div>
+
+                <table cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nombres Abogado</th>
+                            <th>Apellidos Abogado</th>
+                            <th>RUC</th>
+                            <th>Razon Social</th>
+                            <th>Tipo Contribuyente</th>
+                            <th>Petitorio</th>
+                            <th>Fecha Inscripcion</th>
+                            <th>Domicilio Fiscal</th>
+                            <th width="230">Comentarios</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cotizacion of cotizacion | paginate:{ itemsPerPage:3, currentPage: p}">
+                            <td>{{cotizacion.data.nombres}}</td>
+                            <td>{{cotizacion.data.apellidos}}</td>
+                            <td>{{cotizacion.data.ruc}}</td>
+                            <td>{{cotizacion.data.razon_social}}</td>
+                            <td>{{cotizacion.data.tipo_contribuyente}}</td>
+                            <td>{{cotizacion.data.petitorio}}</td>
+                            <td>{{cotizacion.data.fecha_inscripcion}}</td>
+                            <td>{{cotizacion.data.domicilio_fiscal}}</td>
+                            <td>{{cotizacion.data.comentario}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="p=$event" class="pagination" style="width: 100%"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
