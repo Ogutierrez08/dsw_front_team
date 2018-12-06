@@ -9,42 +9,62 @@
                 <div class="card-body p-5">
                     <div class="row">
                         <div class="col-md-8">
-                            <form (ngSubmit)="guardarDemandaAsig(form)" #form="ngForm">
+                            <div class="md-form">
+                                <input class="form-control" placeholder="Comentario" [(ngModel)]="demanda.comentario" readonly="readonly" id="comentario" type="text" name="comentario" required="required" ngModel/>
+
+                            </div>
+
+                            <div class="md-form">
+                                <input class="form-control" placeholder="Petitorio" [(ngModel)]="demanda.petitorio" readonly="readonly" id="petitorio" type="text" name="petitorio" required="required" ngModel/>
+
+                            </div>
+
+                            <div class="md-form" style="display: none">
+                                <input class="form-control" placeholder="Ruc" [(ngModel)]="demanda.ruc" readonly="readonly" id="ruc" type="text" name="ruc" required="required" ngModel/>
+
+                            </div>
+                            <div class="md-form">
+                                <input class="form-control" placeholder="Razon Social" [(ngModel)]="demanda.razon_social" readonly="readonly" id="razon_social" type="text" name="razon_social" required="required" ngModel/>
+
+                            </div>
+                            <div class="md-form">
+                                <input class="form-control" placeholder="domicilio Fiscal" [(ngModel)]="demanda.domicilio_fiscal" readonly="readonly" id="domicilio_fiscal" type="text" name="domicilio_fiscal" required="required" ngModel/>
+
+                            </div>
+                            <div class="md-form">
+                                <input class="form-control" placeholder="Tipo de contribuyente" [(ngModel)]="demanda.tipo_contribuyente" readonly="readonly" id="contribuyente_tipo" type="text" name="contribuyente_tipo" required="required" ngModel/>
+
+                            </div>
+                            <div class="md-form">
+                                <input class="form-control" placeholder="Fecha de Incripcion" [(ngModel)]="demanda.fecha_inscripcion" readonly="readonly" id="fecha_inscripcion" type="text" name="fecha_inscripcion" required="required" ngModel/>
+
+                            </div>
+
+                            <div class="center-on-small-only mb-4">
+                                <button class="btn btn-indigo ml-0" (click)="guardarCotizacion()" type="submit"><i class="fa fa-paper-plane-o mr-2"></i>Registrar</button>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="list-unstyled text-center">
+
+                                <select class="form-control" [(ngModel)]="abogado" id="abogado" name="abogado">
+                                                   <option *ngFor="let abog of Lstabogado" [value]="abog.id">
+                                                    {{abog.data.nombres}} {{abog.data.apellidos}}
+                                                </option>  
+                                            </select>
+
                                 <div class="md-form">
-                                    <input class="form-control" placeholder="Comentario" [(ngModel)]="demanda.comentario" readonly="readonly" id="comentario" type="text" name="comentario" required="required" ngModel/>
-
-                                </div>
-
-                                <div class="md-form">
-                                    <input class="form-control" placeholder="Petitorio" [(ngModel)]="demanda.petitorio" readonly="readonly" id="petitorio" type="text" name="petitorio" required="required" ngModel/>
-
-                                </div>
-
-                                <div class="md-form" style="display: none">
-                                    <input class="form-control" placeholder="Ruc" [(ngModel)]="demanda.ruc" readonly="readonly" id="ruc" type="text" name="ruc" required="required" ngModel/>
-
+                                    <input class="form-control" placeholder="Nombre representante legal" [(ngModel)]="abogado.nombres" readonly="readonly" id="nombres" type="text" name="nombres" required="required" ngModel/>
                                 </div>
                                 <div class="md-form">
-                                    <input class="form-control" placeholder="Razon Social" [(ngModel)]="demanda.razon_social" readonly="readonly" id="razon_social" type="text" name="razon_social" required="required" ngModel/>
-
+                                    <input class="form-control" placeholder="Apellido representante legal" [(ngModel)]="abogado.apellidos" readonly="readonly" id="apellidos" type="text" name="apellidos" required="required" ngModel/>
                                 </div>
-                                <div class="md-form">
-                                    <input class="form-control" placeholder="domicilio Fiscal" [(ngModel)]="demanda.domicilio_fiscal" readonly="readonly" id="domicilio_fiscal" type="text" name="domicilio_fiscal" required="required" ngModel/>
-
-                                </div>
-                                <div class="md-form">
-                                    <input class="form-control" placeholder="Tipo de contribuyente" [(ngModel)]="demanda.tipo_contribuyente" readonly="readonly" id="contribuyente_tipo" type="text" name="contribuyente_tipo" required="required" ngModel/>
-
-                                </div>
-                                <div class="md-form">
-                                    <input class="form-control" placeholder="Fecha de Incripcion" [(ngModel)]="demanda.fecha_inscripcion" readonly="readonly" id="fecha_inscripcion" type="text" name="fecha_inscripcion" required="required" ngModel/>
-
-                                </div>
-
                                 <div class="center-on-small-only mb-4">
-                                    <button class="btn btn-indigo ml-0" type="submit"><i class="fa fa-paper-plane-o mr-2"></i>Registrar</button>
+                                    <button (click)="getAbogadoId($event,abogado)" class="btn btn-indigo ml-0" type="submit"><i class="fa fa-paper-plane-o mr-2"></i>Asignar</button>
                                 </div>
-                            </form>
+
+                            </ul>
                         </div>
                     </div>
                 </div>

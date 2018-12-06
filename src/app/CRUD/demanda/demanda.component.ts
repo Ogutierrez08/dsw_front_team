@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from "src/app/services/firestore/firestore.service";
 import { DemandaInterface } from 'src/app/models/demanda';
 import { NgForm } from "@angular/forms";
+import { AbogadosInterface } from 'src/app/models/abogados';
+import { Cotizacion } from 'src/app/models/cotizacion';
+import { element } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-demanda',
@@ -20,6 +23,36 @@ export class DemandaComponent implements OnInit {
     razon_social:'',
     tipo_contribuyente:''
   };
+
+  abogado: AbogadosInterface = {
+		apellidos: '',
+		comentarios: '',
+		email: '',
+		especialidad: '',
+		facebook: '',
+		foto: '',
+		google: '',
+		nombres: '',
+		telefono: '',
+		twitter: '',
+
+  };
+
+  cotizacion: Cotizacion = {
+    ruc: '',
+    petitorio: '',
+    comentario: '',
+    domicilio_fiscal:'',
+    fecha_inscripcion:'',
+    razon_social:'',
+    tipo_contribuyente:'',
+    apellidos: '',
+    nombres: ''
+  };
+  
+
+  public Lstabogado = []
+
   constructor(private firestoreService: FirestoreService) { }
 
   ngOnInit() {
@@ -32,6 +65,19 @@ export class DemandaComponent implements OnInit {
         });
       });
     });
+
+    this.firestoreService.getAbogados().subscribe((abogadoSnapShot)=>{
+      this.Lstabogado = [];
+      abogadoSnapShot.forEach((abogadoData:any)=>{
+        this.Lstabogado.push({
+          id: abogadoData.payload.doc.id,
+          data: abogadoData.payload.doc.data()
+        });
+      });
+      console.log(this.Lstabogado)
+    });
+
+    
   }
 
   getDemandaId(event,asigDemanda) {
@@ -50,8 +96,37 @@ export class DemandaComponent implements OnInit {
     }
   }
 
-  guardarDemandaAsig(myForm: NgForm){
-    console.log(this.demanda)
+  asignarCotizacion(onSuccess){
+      this.cotizacion.ruc = this.demanda.ruc
+      this.cotizacion.razon_social = this.demanda.razon_social
+      this.cotizacion.petitorio = this.demanda.petitorio
+      this.cotizacion.domicilio_fiscal = this.demanda.domicilio_fiscal
+      this.cotizacion.tipo_contribuyente = this.demanda.tipo_contribuyente
+      this.cotizacion.comentario = this.demanda.comentario
+      this.cotizacion.fecha_inscripcion = this.demanda.fecha_inscripcion
+      this.cotizacion.apellidos = this.abogado.apellidos
+      this.cotizacion.nombres = this.abogado.nombres
+    onSuccess()
   }
 
+  getAbogadoId(event,asigAbog){
+    this.firestoreService.getAbogado(asigAbog).subscribe(data =>{
+      this.abogado = data.payload.data()
+    })
+  }
+
+  guardarDemanda(){
+    console.log(this.cotizacion)
+    this.firestoreService.crearCotizacion(this.cotizacion, () => {
+      swal("Cotizacion", "Registrada","success").then((value) =>{
+        location.reload();
+      });
+    });
+  }
+
+  guardarCotizacion(){
+    this.asignarCotizacion(()=>{
+      this.guardarDemanda()
+    })
+  }
 }
