@@ -12,7 +12,9 @@
                         <div class="col-md-6">
                             <h2>Demandas:</h2>
                             <div class="md-form">
-                                <input class="form-control" placeholder="Comentario" [(ngModel)]="demanda.comentario" readonly="readonly" id="comentario" type="text" name="comentario" required="required" ngModel/>
+
+                                <input class="form-control" placeholder="Dni Demandante" [(ngModel)]="demanda.comentario" readonly="readonly" id="comentario" type="text" name="comentario" required="required" ngModel/>
+
 
                             </div>
 
@@ -81,44 +83,48 @@
                             </ul>
                         </div>
                         <div class="table-users" style="width: 100%;">
-                                <div class="header">
-                                    
-                    
-                                </div>
-                                <table cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Ruc</th>
-                                            <th>Petitorio</th>
-                                            <th width="230">Comentario</th>
-                                            <th>Fecha Inscripcion</th>
-                                            <th>Razon Social</th>
-                                            <th>Tipo Contribuyente</th>
-                                            <th width="230">Domicilio Fiscal</th>
-                                            <th>Asignar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let demanda of Lstdemanda | paginate:{itemsPerPage:3, currentPage:p}">
-                                            <td>{{demanda.data.ruc}}</td>
-                                            <td>{{demanda.data.petitorio}}</td>
-                                            <td>{{demanda.data.comentario}}</td>
-                                            <td>{{demanda.data.fecha_inscripcion}}</td>
-                                            <td>{{demanda.data.razon_social}}</td>
-                                            <td>{{demanda.data.tipo_contribuyente}}</td>
-                                            <td>{{demanda.data.domicilio_fiscal}}</td>
-                                            <td> <button class="btn btn-indigo ml-1" type="submit" (click)="getDemandaId($event,demanda)">Asignar</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <pagination-controls (pageChange)="p=$event" class="pagination" style="width: 100%"></pagination-controls>
+
+                            <div class="header">
+
+
                             </div>
+                            <table cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Ruc</th>
+                                        <th>Petitorio</th>
+                                        <th width="230">DNI Demandante</th>
+                                        <th>Fecha Inscripcion</th>
+                                        <th>Razon Social</th>
+                                        <th>Tipo Contribuyente</th>
+                                        <th width="230">Domicilio Fiscal</th>
+                                        <th>Asignar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let demanda of Lstdemanda | paginate:{itemsPerPage:3, currentPage:p}">
+                                        <td>{{demanda.data.ruc}}</td>
+                                        <td>{{demanda.data.petitorio}}</td>
+                                        <td>{{demanda.data.comentario}}</td>
+                                        <td>{{demanda.data.fecha_inscripcion}}</td>
+                                        <td>{{demanda.data.razon_social}}</td>
+                                        <td>{{demanda.data.tipo_contribuyente}}</td>
+                                        <td>{{demanda.data.domicilio_fiscal}}</td>
+                                        <td> <button class="btn btn-indigo ml-1" type="submit" (click)="getDemandaId($event,demanda)">Asignar</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <pagination-controls (pageChange)="p=$event" class="pagination" style="width: 100%"></pagination-controls>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
 
-        
+
+
+
     </div>
 </section>
 <app-footer></app-footer>
