@@ -143,14 +143,18 @@ export class DemandaComponent implements OnInit {
 
   guardarCoti(){
     console.log(this.cotizacion)
-    this.firestoreService.crearCotizacion(this.cotizacion, () => {
-      swal("Cotizacion", "Registrada","success").then(() =>{
-        this.firestoreService.deleteDemanda(this.demanda.id,()=>{
-          location.reload();
-          this.sendCoti('1')
-        })
+    if(this.cotizacion.ruc=='' || this.cotizacion.nombres==''){
+     swal('Cotizacion','Campos vacios','error') 
+    }else{
+      this.firestoreService.crearCotizacion(this.cotizacion, () => {
+        swal("Cotizacion", "Registrada","success").then(() =>{
+          this.firestoreService.deleteDemanda(this.demanda.id,()=>{
+            location.reload();
+            this.sendCoti('1')
+          })
+        });
       });
-    });
+    }
   }
 
   guardarCotizacion(){
