@@ -113,7 +113,7 @@ export class FirestoreService {
   }
 
   public listarCotizaEnviadas(){
-    return this.firestore.collection('cotizacionesEnviadas').snapshotChanges();
+    return this.firestore.collection('cotizacionEnv').snapshotChanges();
   }
 }
 
