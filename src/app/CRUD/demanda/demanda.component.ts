@@ -137,7 +137,7 @@ export class DemandaComponent implements OnInit {
 
   getAbogadoId(event,asigAbog){
     this.firestoreService.getAbogado(asigAbog).subscribe(data =>{
-      this.abogado = data.payload.data()
+        this.abogado = data.payload.data()
     })
   }
 
