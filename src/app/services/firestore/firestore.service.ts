@@ -5,7 +5,7 @@ import {AbogadosInterface} from 'src/app/models/abogados'
 import { EmpleadosInterface } from 'src/app/models/empleados';
 import { DemandaInterface } from 'src/app/models/demanda';
 import { Cotizacion } from 'src/app/models/cotizacion';
-
+import { CotizacionesEnviadas } from "src/app/models/cotizacionEnviada";
 
 @Injectable({
   providedIn: 'root'
@@ -110,6 +110,10 @@ export class FirestoreService {
     this.cotizacionColecction.doc(documentId).delete().then(()=>{
       onSuccess()
     })
+  }
+
+  public listarCotizaEnviadas(){
+    return this.firestore.collection('cotizacionesEnviadas').snapshotChanges();
   }
 }
 
