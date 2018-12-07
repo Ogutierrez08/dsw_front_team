@@ -42,6 +42,7 @@ import { RegistrarEmpleadoComponent } from './CRUD/registrar-empleado/registrar-
 import { DemandaComponent } from './CRUD/demanda/demanda.component';
 import { ValidaSunatComponent } from './validaSunat/valida-sunat/valida-sunat.component';
 import { CotizacionComponent } from './CRUD/cotizacion/cotizacion.component';
+import { CotizaEnviadasComponent } from './CRUD/cotiza-enviadas/cotiza-enviadas.component';
 
 //import el auth
 //import { AuthService } from './services/auth.service';
@@ -68,7 +69,9 @@ import { CotizacionComponent } from './CRUD/cotizacion/cotizacion.component';
 
     ValidaSunatComponent,
 
-    CotizacionComponent
+    CotizacionComponent,
+
+    CotizaEnviadasComponent
   ],
   imports: [
     BrowserModule,
