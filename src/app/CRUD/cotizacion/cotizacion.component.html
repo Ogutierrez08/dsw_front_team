@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let cotizacion of cotizacion | paginate:{ itemsPerPage:3, currentPage: p}">
+                        <tr *ngFor="let cotizacion of cotizaciones | paginate:{ itemsPerPage:3, currentPage: p}">
                             <td>{{cotizacion.data.nombres}}</td>
                             <td>{{cotizacion.data.apellidos}}</td>
                             <td>{{cotizacion.data.ruc}}</td>
