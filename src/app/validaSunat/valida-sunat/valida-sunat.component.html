@@ -22,7 +22,7 @@
                             <form (ngSubmit)="form.form.valid && guardarDemanda(form)" #form="ngForm" novalidate>
                                 <div class="md-form">
                                     <input class="form-control" [(ngModel)]="demanda.comentario" id="comentario" type="text" name="comentario" #comentario="ngModel" required="required" minlength="8" maxlength="8" pattern="[0-9]+" />
-                                    <label for="name">DNI Demandante</label>
+                                    <label for="name">DNI Del Demandante</label>
                                 </div>
                                 <div *ngIf="form.touched && comentario.invalid" class="alert alert-danger" role="alert">
                                     <div class="row">
