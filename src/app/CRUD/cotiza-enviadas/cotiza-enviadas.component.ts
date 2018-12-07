@@ -13,7 +13,7 @@ export class CotizaEnviadasComponent implements OnInit {
   constructor(private firestoreService: FirestoreService) { }
 
   ngOnInit() {
-    this.firestoreService.listarCotizacion().subscribe((cotizacionSnapshot)=>{
+    this.firestoreService.listarCotizaEnviadas().subscribe((cotizacionSnapshot)=>{
       this.cotizacionesEnviadas=[];
       cotizacionSnapshot.forEach((cotizacionData:any)=>{
         this.cotizacionesEnviadas.push({

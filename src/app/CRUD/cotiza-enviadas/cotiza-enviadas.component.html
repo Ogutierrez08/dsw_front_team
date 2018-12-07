@@ -4,7 +4,7 @@
           <div class="wow fadeIn">
               <h2 class="h1 text-white pt-5 pb-3 text-center">Cotizaciones</h2>
               <p class="text-white px-5 mb-5 pb-3 lead text-center">
-                  Relacion de Cotizaciones Registradas
+                  Relacion de Cotizaciones Enviadas
               </p>
           </div>
 
@@ -23,7 +23,6 @@
                           <th width="230">Fecha Inscripcion</th>
                           <th width="230">Domicilio Fiscal</th>
                           <th width="230">Comentarios</th>
-                          <th>Enviar</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -37,7 +36,6 @@
                           <td>{{cotizacion.data.fecha_inscripcion}}</td>
                           <td>{{cotizacion.data.domicilio_fiscal}}</td>
                           <td>{{cotizacion.data.comentario}}</td>
-                          <td> <button class="btn btn-indigo ml-1" type="submit" (click)="sendCotizacion($event,cotizacion)">Enviar</button></td>
                       </tr>
                   </tbody>
               </table>
