@@ -20,6 +20,8 @@ export class FirestoreService {
 
   cotizacionColecction: AngularFirestoreCollection<Cotizacion>
 
+  cotizacionEnvColecction: AngularFirestoreCollection<Cotizacion>
+
   
 
   constructor(private firestore: AngularFirestore) { 
@@ -27,6 +29,7 @@ export class FirestoreService {
   this.empleadoColecction = firestore.collection<EmpleadosInterface>('empleados');
   this.demandaColecction = firestore.collection<DemandaInterface>('demanda')
   this.cotizacionColecction = firestore.collection<Cotizacion>('cotizacion')
+  this.cotizacionEnvColecction = firestore.collection<Cotizacion>('cotizacionEnv')
   }
 
   public createAbogado(abogado:AbogadosInterface, onSuccess:Function){
@@ -48,7 +51,7 @@ export class FirestoreService {
   
   public updateAbogado(documentId: string, data: any) {
     return this.firestore.collection('abogados').doc(documentId).set(data);
-  }
+          }
 
   /**
    * Empleado - CRUD
@@ -97,4 +100,17 @@ export class FirestoreService {
   public listarCotizacion(){
     return this.firestore.collection('cotizacion').snapshotChanges();
   }
+
+  public crearCotizacionEnv(cotizacion:Cotizacion,onSuccess){
+    this.cotizacionEnvColecction.add(cotizacion).then(()=>{
+      onSuccess()
+    })
+  }
+  public deleteCotizacion(documentId: string,onSuccess){
+    this.cotizacionColecction.doc(documentId).delete().then(()=>{
+      onSuccess()
+    })
+  }
 }
+
+  
